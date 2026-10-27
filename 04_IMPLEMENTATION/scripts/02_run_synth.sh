@@ -9,12 +9,8 @@ OUT=06_GDSII/synthesis; mkdir -p "$OUT"
 
 command -v yosys >/dev/null || { echo "[LOI] thieu 'yosys' (sudo apt install yosys)"; exit 2; }
 
-LIB="${1:-${LIBERTY:-}}"
-[ -z "$LIB" ] && [ -n "${PDK_ROOT:-}" ] && \
-  LIB="$PDK_ROOT/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib"
-[ -z "$LIB" ] || [ ! -f "$LIB" ] && {
-  echo "[LOI] khong tim thay Liberty sky130_fd_sc_hd__tt_025C_1v80.lib"
-  echo "      export PDK_ROOT=<thu muc pdk>  hoac  bash $0 /duong/dan/file.lib"; exit 3; }
+LIB="/home/hathanhtrunh/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib"
+
 
 yosys -V | head -1 | tee "$OUT/tool_versions.txt"
 echo "Liberty: $LIB" | tee -a "$OUT/tool_versions.txt"

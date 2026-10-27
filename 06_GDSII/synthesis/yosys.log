@@ -21,9 +21,9 @@ Removed 0 unused modules.
 Cleaned up 0 empty switches.
 
 3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
-Marked 2 switch rules as full_case in process $04_IMPLEMENTATION/rtl/d03_core.sv:42$proc$15 in module d03_core.
-Marked 4 switch rules as full_case in process $04_IMPLEMENTATION/rtl/d03_core.sv:22$proc$6 in module d03_core.
-Marked 2 switch rules as full_case in process $04_IMPLEMENTATION/rtl/d03_core.sv:13$proc$1 in module d03_core.
+Marked 2 switch rules as full_case in process $proc$04_IMPLEMENTATION/rtl/d03_core.sv:0$15 in module d03_core.
+Marked 4 switch rules as full_case in process $proc$04_IMPLEMENTATION/rtl/d03_core.sv:22$6 in module d03_core.
+Marked 2 switch rules as full_case in process $proc$04_IMPLEMENTATION/rtl/d03_core.sv:0$1 in module d03_core.
 Removed a total of 0 dead cases.
 
 3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
@@ -39,38 +39,38 @@ Converted 0 switches.
 <suppressed ~8 debug messages>
 
 3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
-Creating decoders for process `\d03_core.$04_IMPLEMENTATION/rtl/d03_core.sv:42$proc$15'.
+Creating decoders for process `\d03_core.$proc$04_IMPLEMENTATION/rtl/d03_core.sv:0$15'.
      1/2: $2\count[6:0]
      2/2: $1\count[6:0]
-Creating decoders for process `\d03_core.$04_IMPLEMENTATION/rtl/d03_core.sv:22$proc$6'.
+Creating decoders for process `\d03_core.$proc$04_IMPLEMENTATION/rtl/d03_core.sv:22$6'.
      1/3: $0\phase[7:0]
      2/3: $0\n_reg[7:0]
      3/3: $0\out[0:0]
-Creating decoders for process `\d03_core.$04_IMPLEMENTATION/rtl/d03_core.sv:13$proc$1'.
+Creating decoders for process `\d03_core.$proc$04_IMPLEMENTATION/rtl/d03_core.sv:0$1'.
      1/2: $2\half_len[7:0]
      2/2: $1\half_len[7:0]
 
 3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
-No latch inferred for signal `\d03_core.\count' from process `\d03_core.$04_IMPLEMENTATION/rtl/d03_core.sv:42$proc$15'.
-No latch inferred for signal `\d03_core.\half_len' from process `\d03_core.$04_IMPLEMENTATION/rtl/d03_core.sv:13$proc$1'.
+No latch inferred for signal `\d03_core.\count' from process `\d03_core.$proc$04_IMPLEMENTATION/rtl/d03_core.sv:0$15'.
+No latch inferred for signal `\d03_core.\half_len' from process `\d03_core.$proc$04_IMPLEMENTATION/rtl/d03_core.sv:0$1'.
 
 3.9. Executing PROC_DFF pass (convert process syncs to FFs).
-Creating register for signal `\d03_core.\out' using process `\d03_core.$04_IMPLEMENTATION/rtl/d03_core.sv:22$proc$6'.
+Creating register for signal `\d03_core.\out' using process `\d03_core.$proc$04_IMPLEMENTATION/rtl/d03_core.sv:22$6'.
   created $dff cell `$procdff$66' with positive edge clock.
-Creating register for signal `\d03_core.\n_reg' using process `\d03_core.$04_IMPLEMENTATION/rtl/d03_core.sv:22$proc$6'.
+Creating register for signal `\d03_core.\n_reg' using process `\d03_core.$proc$04_IMPLEMENTATION/rtl/d03_core.sv:22$6'.
   created $dff cell `$procdff$67' with positive edge clock.
-Creating register for signal `\d03_core.\phase' using process `\d03_core.$04_IMPLEMENTATION/rtl/d03_core.sv:22$proc$6'.
+Creating register for signal `\d03_core.\phase' using process `\d03_core.$proc$04_IMPLEMENTATION/rtl/d03_core.sv:22$6'.
   created $dff cell `$procdff$68' with positive edge clock.
 
 3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
 
 3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
-Found and cleaned up 2 empty switches in `\d03_core.$04_IMPLEMENTATION/rtl/d03_core.sv:42$proc$15'.
-Removing empty process `d03_core.$04_IMPLEMENTATION/rtl/d03_core.sv:42$proc$15'.
-Found and cleaned up 4 empty switches in `\d03_core.$04_IMPLEMENTATION/rtl/d03_core.sv:22$proc$6'.
-Removing empty process `d03_core.$04_IMPLEMENTATION/rtl/d03_core.sv:22$proc$6'.
-Found and cleaned up 2 empty switches in `\d03_core.$04_IMPLEMENTATION/rtl/d03_core.sv:13$proc$1'.
-Removing empty process `d03_core.$04_IMPLEMENTATION/rtl/d03_core.sv:13$proc$1'.
+Found and cleaned up 2 empty switches in `\d03_core.$proc$04_IMPLEMENTATION/rtl/d03_core.sv:0$15'.
+Removing empty process `d03_core.$proc$04_IMPLEMENTATION/rtl/d03_core.sv:0$15'.
+Found and cleaned up 4 empty switches in `\d03_core.$proc$04_IMPLEMENTATION/rtl/d03_core.sv:22$6'.
+Removing empty process `d03_core.$proc$04_IMPLEMENTATION/rtl/d03_core.sv:22$6'.
+Found and cleaned up 2 empty switches in `\d03_core.$proc$04_IMPLEMENTATION/rtl/d03_core.sv:0$1'.
+Removing empty process `d03_core.$proc$04_IMPLEMENTATION/rtl/d03_core.sv:0$1'.
 Cleaned up 8 empty switches.
 
 3.12. Executing OPT_EXPR pass (perform const folding).
@@ -85,10 +85,6 @@ Optimizing module d03_core.
 
 4.2. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\d03_core'.
-Computing hashes of 31 cells of `\d03_core'.
-Finding duplicate cells in `\d03_core'.
-Computing hashes of 30 cells of `\d03_core'.
-Finding duplicate cells in `\d03_core'.
 <suppressed ~3 debug messages>
 Removed a total of 1 cells.
 
@@ -100,7 +96,7 @@ Running muxtree optimizer on module \d03_core..
     dead port 1/2 on $mux $procmux$61.
     dead port 1/2 on $mux $procmux$22.
 Removed 2 multiplexer ports.
-<suppressed ~22 debug messages>
+<suppressed ~5 debug messages>
 
 4.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
   Optimizing cells in module \d03_core.
@@ -108,16 +104,14 @@ Performed a total of 0 changes.
 
 4.5. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\d03_core'.
-Computing hashes of 28 cells of `\d03_core'.
-Finding duplicate cells in `\d03_core'.
 Removed a total of 0 cells.
 
 4.6. Executing OPT_DFF pass (perform DFF optimizations).
-Adding SRST signal on $procdff$68 ($dff) from module d03_core (D = $04_IMPLEMENTATION/rtl/d03_core.sv:38$add$14_Y, Q = \phase, rval = 8'00000000).
+Adding SRST signal on $procdff$68 ($dff) from module d03_core (D = $add$04_IMPLEMENTATION/rtl/d03_core.sv:38$14_Y, Q = \phase, rval = 8'00000000).
 Adding SRST signal on $procdff$67 ($dff) from module d03_core (D = $procmux$40_Y, Q = \n_reg, rval = 8'00000001).
-Adding EN signal on $auto$ff.cc:337:slice$74 ($sdff) from module d03_core (D = $04_IMPLEMENTATION/rtl/d03_core.sv:28$ternary$9_Y, Q = \n_reg).
+Adding EN signal on $auto$ff.cc:266:slice$74 ($sdff) from module d03_core (D = $ternary$04_IMPLEMENTATION/rtl/d03_core.sv:28$9_Y, Q = \n_reg).
 Adding SRST signal on $procdff$66 ($dff) from module d03_core (D = $procmux$49_Y, Q = \out, rval = 1'0).
-Adding EN signal on $auto$ff.cc:337:slice$76 ($sdff) from module d03_core (D = $procmux$49_Y, Q = \out).
+Adding EN signal on $auto$ff.cc:266:slice$76 ($sdff) from module d03_core (D = $procmux$49_Y, Q = \out).
 
 4.7. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \d03_core..
@@ -136,7 +130,7 @@ Running muxtree optimizer on module \d03_core..
   Evaluating internal representation of mux trees.
   Analyzing evaluation results.
 Removed 0 multiplexer ports.
-<suppressed ~11 debug messages>
+<suppressed ~4 debug messages>
 
 4.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
   Optimizing cells in module \d03_core.
@@ -144,10 +138,6 @@ Performed a total of 0 changes.
 
 4.12. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\d03_core'.
-Computing hashes of 24 cells of `\d03_core'.
-Finding duplicate cells in `\d03_core'.
-Computing hashes of 23 cells of `\d03_core'.
-Finding duplicate cells in `\d03_core'.
 <suppressed ~3 debug messages>
 Removed a total of 1 cells.
 
@@ -169,7 +159,7 @@ Running muxtree optimizer on module \d03_core..
   Evaluating internal representation of mux trees.
   Analyzing evaluation results.
 Removed 0 multiplexer ports.
-<suppressed ~11 debug messages>
+<suppressed ~4 debug messages>
 
 4.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
   Optimizing cells in module \d03_core.
@@ -177,8 +167,6 @@ Performed a total of 0 changes.
 
 4.19. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\d03_core'.
-Computing hashes of 23 cells of `\d03_core'.
-Finding duplicate cells in `\d03_core'.
 Removed a total of 0 cells.
 
 4.20. Executing OPT_DFF pass (perform DFF optimizations).
@@ -189,7 +177,7 @@ Finding unused cells or wires in module \d03_core..
 4.22. Executing OPT_EXPR pass (perform const folding).
 Optimizing module d03_core.
 
-4.23. Finished fast OPT passes. (There is nothing left to do.)
+4.23. Finished OPT passes. (There is nothing left to do.)
 
 5. Executing FSM pass (extract and optimize FSM).
 
@@ -217,8 +205,6 @@ Optimizing module d03_core.
 
 6.2. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\d03_core'.
-Computing hashes of 23 cells of `\d03_core'.
-Finding duplicate cells in `\d03_core'.
 Removed a total of 0 cells.
 
 6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
@@ -227,7 +213,7 @@ Running muxtree optimizer on module \d03_core..
   Evaluating internal representation of mux trees.
   Analyzing evaluation results.
 Removed 0 multiplexer ports.
-<suppressed ~11 debug messages>
+<suppressed ~4 debug messages>
 
 6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
   Optimizing cells in module \d03_core.
@@ -235,8 +221,6 @@ Performed a total of 0 changes.
 
 6.5. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\d03_core'.
-Computing hashes of 23 cells of `\d03_core'.
-Finding duplicate cells in `\d03_core'.
 Removed a total of 0 cells.
 
 6.6. Executing OPT_DFF pass (perform DFF optimizations).
@@ -247,7 +231,7 @@ Finding unused cells or wires in module \d03_core..
 6.8. Executing OPT_EXPR pass (perform const folding).
 Optimizing module d03_core.
 
-6.9. Finished fast OPT passes. (There is nothing left to do.)
+6.9. Finished OPT passes. (There is nothing left to do.)
 
 7. Executing MEMORY pass.
 
@@ -285,8 +269,6 @@ Optimizing module d03_core.
 
 8.2. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\d03_core'.
-Computing hashes of 23 cells of `\d03_core'.
-Finding duplicate cells in `\d03_core'.
 Removed a total of 0 cells.
 
 8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
@@ -295,7 +277,7 @@ Running muxtree optimizer on module \d03_core..
   Evaluating internal representation of mux trees.
   Analyzing evaluation results.
 Removed 0 multiplexer ports.
-<suppressed ~11 debug messages>
+<suppressed ~4 debug messages>
 
 8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
   Optimizing cells in module \d03_core.
@@ -303,8 +285,6 @@ Performed a total of 0 changes.
 
 8.5. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\d03_core'.
-Computing hashes of 23 cells of `\d03_core'.
-Finding duplicate cells in `\d03_core'.
 Removed a total of 0 cells.
 
 8.6. Executing OPT_DFF pass (perform DFF optimizations).
@@ -315,12 +295,12 @@ Finding unused cells or wires in module \d03_core..
 8.8. Executing OPT_EXPR pass (perform const folding).
 Optimizing module d03_core.
 
-8.9. Finished fast OPT passes. (There is nothing left to do.)
+8.9. Finished OPT passes. (There is nothing left to do.)
 
 9. Executing TECHMAP pass (map to technology primitives).
 
-9.1. Executing Verilog-2005 frontend: /home/hathannhtrunh/oss-cad-suite/lib/../share/yosys/techmap.v
-Parsing Verilog input from `/home/hathannhtrunh/oss-cad-suite/lib/../share/yosys/techmap.v' to AST representation.
+9.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/bin/../share/yosys/techmap.v' to AST representation.
 Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
 Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
 Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
@@ -334,37 +314,36 @@ Generating RTLIL representation for module `\_90_lcu_brent_kung'.
 Generating RTLIL representation for module `\_90_alu'.
 Generating RTLIL representation for module `\_90_macc'.
 Generating RTLIL representation for module `\_90_alumacc'.
-Generating RTLIL representation for module `$__div_mod_u'.
-Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
 Generating RTLIL representation for module `\_90_div'.
 Generating RTLIL representation for module `\_90_mod'.
-Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
 Generating RTLIL representation for module `\_90_divfloor'.
 Generating RTLIL representation for module `\_90_modfloor'.
 Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
 Generating RTLIL representation for module `\_90_demux'.
 Generating RTLIL representation for module `\_90_lut'.
-Generating RTLIL representation for module `$connect'.
-Generating RTLIL representation for module `$input_port'.
 Successfully finished Verilog frontend.
 
 9.2. Continuing TECHMAP pass.
-Running "alumacc" on wrapper $extern:wrap:$le:Y_WIDTH=1:B_WIDTH=8:A_WIDTH=8:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
-Using template $extern:wrap:$le:Y_WIDTH=1:B_WIDTH=8:A_WIDTH=8:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$le:Y_WIDTH=1:B_WIDTH=8:A_WIDTH=8:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
-Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=32:B_WIDTH=32:A_WIDTH=8:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
-Using template $extern:wrap:$sub:Y_WIDTH=32:B_WIDTH=32:A_WIDTH=8:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=32:B_WIDTH=32:A_WIDTH=8:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$le:A_SIGNED=0:A_WIDTH=8:B_SIGNED=0:B_WIDTH=8:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$le:A_SIGNED=0:A_WIDTH=8:B_SIGNED=0:B_WIDTH=8:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$le:A_SIGNED=0:A_WIDTH=8:B_SIGNED=0:B_WIDTH=8:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using extmapper simplemap for cells of type $reduce_or.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=8:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=8:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=8:B_SIGNED=0:B_WIDTH=32:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
 Using extmapper simplemap for cells of type $logic_not.
 Using extmapper simplemap for cells of type $mux.
-Running "alumacc" on wrapper $extern:wrap:$sub:Y_WIDTH=8:B_WIDTH=8:A_WIDTH=8:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
-Using template $extern:wrap:$sub:Y_WIDTH=8:B_WIDTH=8:A_WIDTH=8:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:Y_WIDTH=8:B_WIDTH=8:A_WIDTH=8:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=8:B_SIGNED=0:B_WIDTH=8:Y_WIDTH=8:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=8:B_SIGNED=0:B_WIDTH=8:Y_WIDTH=8:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=0:A_WIDTH=8:B_SIGNED=0:B_WIDTH=8:Y_WIDTH=8:394426c56d1a028ba8fdd5469b163e04011def47.
 Using extmapper simplemap for cells of type $eq.
 Using extmapper simplemap for cells of type $not.
-Running "alumacc" on wrapper $extern:wrap:$add:Y_WIDTH=8:B_WIDTH=8:A_WIDTH=8:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
-Using template $extern:wrap:$add:Y_WIDTH=8:B_WIDTH=8:A_WIDTH=8:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:Y_WIDTH=8:B_WIDTH=8:A_WIDTH=8:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
-Running "alumacc" on wrapper $extern:wrap:$gt:Y_WIDTH=1:B_WIDTH=8:A_WIDTH=8:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
-Using template $extern:wrap:$gt:Y_WIDTH=1:B_WIDTH=8:A_WIDTH=8:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$gt:Y_WIDTH=1:B_WIDTH=8:A_WIDTH=8:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=8:B_SIGNED=0:B_WIDTH=8:Y_WIDTH=8:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=8:B_SIGNED=0:B_WIDTH=8:Y_WIDTH=8:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=8:B_SIGNED=0:B_WIDTH=8:Y_WIDTH=8:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$gt:A_SIGNED=0:A_WIDTH=8:B_SIGNED=0:B_WIDTH=8:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$gt:A_SIGNED=0:A_WIDTH=8:B_SIGNED=0:B_WIDTH=8:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$gt:A_SIGNED=0:A_WIDTH=8:B_SIGNED=0:B_WIDTH=8:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
 Using extmapper simplemap for cells of type $sdff.
-Using extmapper simplemap for cells of type $reduce_or.
 Using extmapper simplemap for cells of type $sdffe.
 Using extmapper simplemap for cells of type $reduce_bool.
 Using extmapper simplemap for cells of type $reduce_and.
@@ -372,35 +351,23 @@ Using template $paramod$a1bc51c02ce12ac21eb18988e83292af48ed7d72\_90_alu for cel
 Using template $paramod$91f82ead1edc61e0a1452110f15ef747116b421b\_90_alu for cells of type $alu.
 Using extmapper simplemap for cells of type $or.
 Using extmapper simplemap for cells of type $xor.
-Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000001000 for cells of type $fa.
+Using extmapper simplemap for cells of type $and.
 Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001000 for cells of type $lcu.
 Using extmapper simplemap for cells of type $pos.
-Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000100000 for cells of type $fa.
 Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000100000 for cells of type $lcu.
-Using extmapper simplemap for cells of type $and.
 No more expansions possible.
-<suppressed ~743 debug messages>
+<suppressed ~767 debug messages>
 
 10. Executing OPT pass (performing simple optimizations).
 
 10.1. Executing OPT_EXPR pass (perform const folding).
 Optimizing module d03_core.
-<suppressed ~669 debug messages>
+<suppressed ~453 debug messages>
 
 10.2. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\d03_core'.
-Computing hashes of 319 cells of `\d03_core'.
-Finding duplicate cells in `\d03_core'.
-Computing hashes of 274 cells of `\d03_core'.
-Finding duplicate cells in `\d03_core'.
-Computing hashes of 263 cells of `\d03_core'.
-Finding duplicate cells in `\d03_core'.
-Computing hashes of 258 cells of `\d03_core'.
-Finding duplicate cells in `\d03_core'.
-Computing hashes of 255 cells of `\d03_core'.
-Finding duplicate cells in `\d03_core'.
-<suppressed ~192 debug messages>
-Removed a total of 64 cells.
+<suppressed ~198 debug messages>
+Removed a total of 66 cells.
 
 10.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
 Running muxtree optimizer on module \d03_core..
@@ -414,15 +381,13 @@ Performed a total of 0 changes.
 
 10.5. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\d03_core'.
-Computing hashes of 255 cells of `\d03_core'.
-Finding duplicate cells in `\d03_core'.
 Removed a total of 0 cells.
 
 10.6. Executing OPT_DFF pass (perform DFF optimizations).
 
 10.7. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \d03_core..
-Removed 37 unused cells and 452 unused wires.
+Removed 37 unused cells and 359 unused wires.
 <suppressed ~38 debug messages>
 
 10.8. Executing OPT_EXPR pass (perform const folding).
@@ -442,8 +407,6 @@ Performed a total of 0 changes.
 
 10.12. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\d03_core'.
-Computing hashes of 218 cells of `\d03_core'.
-Finding duplicate cells in `\d03_core'.
 Removed a total of 0 cells.
 
 10.13. Executing OPT_DFF pass (perform DFF optimizations).
@@ -454,194 +417,7 @@ Finding unused cells or wires in module \d03_core..
 10.15. Executing OPT_EXPR pass (perform const folding).
 Optimizing module d03_core.
 
-10.16. Finished fast OPT passes. (There is nothing left to do.)
+10.16. Finished OPT passes. (There is nothing left to do.)
 
-11. Executing DFFLIBMAP pass (mapping DFF/DLATCH cells to sequential cells from liberty file).
-  cell sky130_fd_sc_hd__dfxtp_1 (noninv, pins=3, area=20.02) is a direct match for cell type $_DFF_P_.
-  cell sky130_fd_sc_hd__dfrtn_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_NN0_.
-  cell sky130_fd_sc_hd__dfrtp_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_PN0_.
-  cell sky130_fd_sc_hd__dfstp_1 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN1_.
-  cell sky130_fd_sc_hd__edfxtp_1 (noninv, pins=4, area=30.03) is a direct match for cell type $_DFFE_PP_.
-  cell sky130_fd_sc_hd__dfbbn_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_NNN_.
-  cell sky130_fd_sc_hd__dfbbp_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_PNN_.
-  cell sky130_fd_sc_hd__dlxtn_1 (noninv, pins=3, area=15.01) is a direct match for cell type $_DLATCH_N_.
-  cell sky130_fd_sc_hd__lpflow_inputisolatch_1 (noninv, pins=3, area=13.76) is a direct match for cell type $_DLATCH_P_.
-  cell sky130_fd_sc_hd__dlrtn_1 (noninv, pins=4, area=17.52) is a direct match for cell type $_DLATCH_NN0_.
-  cell sky130_fd_sc_hd__dlrtp_1 (noninv, pins=4, area=16.27) is a direct match for cell type $_DLATCH_PN0_.
-  final dff/dlatch cell mappings:
-    unmapped dff/dlatch cell: $_DFF_N_
-    \sky130_fd_sc_hd__dfxtp_1 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
-    \sky130_fd_sc_hd__dfrtn_1 _DFF_NN0_ (.CLK_N( C), .D( D), .Q( Q), .RESET_B( R));
-    unmapped dff/dlatch cell: $_DFF_NN1_
-    unmapped dff/dlatch cell: $_DFF_NP0_
-    unmapped dff/dlatch cell: $_DFF_NP1_
-    \sky130_fd_sc_hd__dfrtp_1 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
-    \sky130_fd_sc_hd__dfstp_1 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SET_B( R));
-    unmapped dff/dlatch cell: $_DFF_PP0_
-    unmapped dff/dlatch cell: $_DFF_PP1_
-    unmapped dff/dlatch cell: $_DFFE_NN_
-    unmapped dff/dlatch cell: $_DFFE_NP_
-    unmapped dff/dlatch cell: $_DFFE_PN_
-    \sky130_fd_sc_hd__edfxtp_1 _DFFE_PP_ (.CLK( C), .D( D), .DE( E), .Q( Q));
-    \sky130_fd_sc_hd__dfbbn_1 _DFFSR_NNN_ (.CLK_N( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
-    unmapped dff/dlatch cell: $_DFFSR_NNP_
-    unmapped dff/dlatch cell: $_DFFSR_NPN_
-    unmapped dff/dlatch cell: $_DFFSR_NPP_
-    \sky130_fd_sc_hd__dfbbp_1 _DFFSR_PNN_ (.CLK( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
-    unmapped dff/dlatch cell: $_DFFSR_PNP_
-    unmapped dff/dlatch cell: $_DFFSR_PPN_
-    unmapped dff/dlatch cell: $_DFFSR_PPP_
-    \sky130_fd_sc_hd__dlxtn_1 _DLATCH_N_ (.D( D), .GATE_N( E), .Q( Q));
-    \sky130_fd_sc_hd__lpflow_inputisolatch_1 _DLATCH_P_ (.D( D), .Q( Q), .SLEEP_B( E));
-    \sky130_fd_sc_hd__dlrtn_1 _DLATCH_NN0_ (.D( D), .GATE_N( E), .Q( Q), .RESET_B( R));
-    unmapped dff/dlatch cell: $_DLATCH_NN1_
-    unmapped dff/dlatch cell: $_DLATCH_NP0_
-    unmapped dff/dlatch cell: $_DLATCH_NP1_
-    \sky130_fd_sc_hd__dlrtp_1 _DLATCH_PN0_ (.D( D), .GATE( E), .Q( Q), .RESET_B( R));
-    unmapped dff/dlatch cell: $_DLATCH_PN1_
-    unmapped dff/dlatch cell: $_DLATCH_PP0_
-    unmapped dff/dlatch cell: $_DLATCH_PP1_
-    unmapped dff/dlatch cell: $_DLATCHSR_NNN_
-    unmapped dff/dlatch cell: $_DLATCHSR_NNP_
-    unmapped dff/dlatch cell: $_DLATCHSR_NPN_
-    unmapped dff/dlatch cell: $_DLATCHSR_NPP_
-    unmapped dff/dlatch cell: $_DLATCHSR_PNN_
-    unmapped dff/dlatch cell: $_DLATCHSR_PNP_
-    unmapped dff/dlatch cell: $_DLATCHSR_PPN_
-    unmapped dff/dlatch cell: $_DLATCHSR_PPP_
-
-11.1. Executing DFFLEGALIZE pass (convert FFs and LATCHes to types supported by the target).
-<suppressed ~24 debug messages>
-Mapping DFF/DLATCH cells in module `\d03_core':
-  mapped 17 $_DFF_P_ cells to \sky130_fd_sc_hd__dfxtp_1 cells.
-
-12. Executing ABC pass (technology mapping using ABC).
-
-12.1. Summary of detected clock domains:
-  244 cells in clk={ }, en={ }, arst={ }, srst={ }
-
-12.2. Extracting gate netlist of module `\d03_core' to `<abc-temp-dir>/input.blif'..
-No matching clock domain found. Not extracting any FF cells.
-Replacing 1 occurrences of constant undef bits with constant zero bits
-
-12.2.1. Executed ABC.
-Extracted 227 gates and 257 wires to a netlist network with 27 inputs and 24 outputs.
-Running ABC script: <abc-temp-dir>/abc.script
-ABC: UC Berkeley, ABC 1.01 (compiled Oct 21 2026 05:14:15)
-ABC: abc 01> empty
-ABC: abc 01> source <abc-temp-dir>/abc.script
-ABC: + read_blif <abc-temp-dir>/input.blif 
-ABC: + read_scl /tmp/yosys-liberty-scl-cache-1000/yosys_merged_35729219.scl 
-ABC: Warning: Detected 9 multi-output cells (for example, "sky130_fd_sc_hd__fa_1").
-ABC: + strash 
-ABC: + &get -n 
-ABC: + &fraig -x 
-ABC: + &put 
-ABC: + scorr 
-ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
-ABC: + dc2 
-ABC: + dretime 
-ABC: + strash 
-ABC: + &get -n 
-ABC: + &dch -f 
-ABC: + &nf 
-ABC: + &put 
-ABC: + write_blif <abc-temp-dir>/output.blif 
-ABC: 
-ABC: YOSYS_ABC_DONE 
-
-12.2.2. Re-integrating ABC results.
-ABC RESULTS:   sky130_fd_sc_hd__a2111oi_0 cells:        1
-ABC RESULTS:   sky130_fd_sc_hd__a21oi_1 cells:        6
-ABC RESULTS:   sky130_fd_sc_hd__a22o_1 cells:        7
-ABC RESULTS:   sky130_fd_sc_hd__a31oi_1 cells:        2
-ABC RESULTS:   sky130_fd_sc_hd__and2_0 cells:        1
-ABC RESULTS:   sky130_fd_sc_hd__and3_1 cells:        4
-ABC RESULTS:   sky130_fd_sc_hd__clkinv_1 cells:        1
-ABC RESULTS:   sky130_fd_sc_hd__lpflow_isobufsrc_1 cells:        2
-ABC RESULTS:   sky130_fd_sc_hd__nand2_1 cells:        3
-ABC RESULTS:   sky130_fd_sc_hd__nand2b_1 cells:        1
-ABC RESULTS:   sky130_fd_sc_hd__nand3_1 cells:        2
-ABC RESULTS:   sky130_fd_sc_hd__nand4_1 cells:        3
-ABC RESULTS:   sky130_fd_sc_hd__nor2_1 cells:        7
-ABC RESULTS:   sky130_fd_sc_hd__nor3_1 cells:        4
-ABC RESULTS:   sky130_fd_sc_hd__nor3b_1 cells:        1
-ABC RESULTS:   sky130_fd_sc_hd__nor4_1 cells:        2
-ABC RESULTS:   sky130_fd_sc_hd__o211ai_1 cells:        1
-ABC RESULTS:   sky130_fd_sc_hd__o21a_1 cells:        8
-ABC RESULTS:   sky130_fd_sc_hd__o32a_1 cells:        1
-ABC RESULTS:   sky130_fd_sc_hd__o41a_1 cells:        1
-ABC RESULTS:   sky130_fd_sc_hd__or4_1 cells:        4
-ABC RESULTS:   sky130_fd_sc_hd__xnor2_1 cells:        6
-ABC RESULTS:   sky130_fd_sc_hd__xnor3_1 cells:        3
-ABC RESULTS:   sky130_fd_sc_hd__xor2_1 cells:        4
-ABC RESULTS:   sky130_fd_sc_hd__xor3_1 cells:        2
-ABC RESULTS:        internal signals:      206
-ABC RESULTS:           input signals:       27
-ABC RESULTS:          output signals:       24
-Removing temp directory.
-Removing global temp directory.
-
-13. Executing SETUNDEF pass (replace undef values with defined constants).
-
-14. Executing SPLITNETS pass (splitting up multi-bit signals).
-
-15. Executing OPT_CLEAN pass (remove unused cells and wires).
-Finding unused cells or wires in module \d03_core..
-Removed 0 unused cells and 396 unused wires.
-<suppressed ~9 debug messages>
-
-16. Printing statistics.
-
-=== d03_core ===
-
-        +----------Local Count, excluding submodules.
-        |        +-Local Area, excluding submodules.
-        |        | 
-       92        - wires
-      105        - wire bits
-       22        - public wires
-       35        - public wire bits
-        6        - ports
-       19        - port bits
-       94  934.646 cells
-        1    8.758   sky130_fd_sc_hd__a2111oi_0
-        6   30.029   sky130_fd_sc_hd__a21oi_1
-        7   61.309   sky130_fd_sc_hd__a22o_1
-        2   12.512   sky130_fd_sc_hd__a31oi_1
-        1    6.256   sky130_fd_sc_hd__and2_0
-        4   25.024   sky130_fd_sc_hd__and3_1
-        1    3.754   sky130_fd_sc_hd__clkinv_1
-       17  340.326   sky130_fd_sc_hd__dfxtp_1
-        2   12.512   sky130_fd_sc_hd__lpflow_isobufsrc_1
-        3   11.261   sky130_fd_sc_hd__nand2_1
-        1    6.256   sky130_fd_sc_hd__nand2b_1
-        2    10.01   sky130_fd_sc_hd__nand3_1
-        3   18.768   sky130_fd_sc_hd__nand4_1
-        7   26.275   sky130_fd_sc_hd__nor2_1
-        4   20.019   sky130_fd_sc_hd__nor3_1
-        1    7.507   sky130_fd_sc_hd__nor3b_1
-        2   12.512   sky130_fd_sc_hd__nor4_1
-        1    7.507   sky130_fd_sc_hd__o211ai_1
-        8   60.058   sky130_fd_sc_hd__o21a_1
-        1    10.01   sky130_fd_sc_hd__o32a_1
-        1   11.261   sky130_fd_sc_hd__o41a_1
-        4   30.029   sky130_fd_sc_hd__or4_1
-        6    52.55   sky130_fd_sc_hd__xnor2_1
-        3   67.565   sky130_fd_sc_hd__xnor3_1
-        4   35.034   sky130_fd_sc_hd__xor2_1
-        2   47.546   sky130_fd_sc_hd__xor3_1
-
-   Chip area for module '\d03_core': 934.646400
-     of which used for sequential elements: 340.326400 (36.41%)
-
-17. Executing Verilog backend.
-
-17.1. Executing BMUXMAP pass.
-
-17.2. Executing DEMUXMAP pass.
-Dumping module `\d03_core'.
-
-End of script. Logfile hash: 7a6fb1afbb, time: 0.76s, user: 0.19s, system: 0.05s, MEM: 26.21 MB peak
-Yosys 0.70+186 (git sha1 3718f7f13, Release, Clang /usr/bin/clang++ 21.1.8)
-Time spent: 65% 1x abc (0 sec), 11% 1x dfflibmap (0 sec), ...
+11. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+ERROR: Can't open liberty file `/home/hathanhtrunh/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib': No such file or directory
