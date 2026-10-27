@@ -1,0 +1,17 @@
+read_verilog -sv 04_IMPLEMENTATION/rtl/d03_core.sv
+hierarchy -check -top d03_core
+proc
+opt
+fsm
+opt
+memory
+opt
+techmap
+opt
+dfflibmap -liberty /home/hathannhtrunh/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty /home/hathannhtrunh/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+setundef -zero
+splitnets
+opt_clean -purge
+tee -o 06_GDSII/synthesis/synth_stat.txt stat -liberty /home/hathannhtrunh/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+write_verilog -noattr 06_GDSII/synthesis/netlist.v

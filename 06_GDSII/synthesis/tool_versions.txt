@@ -1,0 +1,2 @@
+Yosys 0.70+186 (git sha1 3718f7f13, Release, Clang /usr/bin/clang++ 21.1.8)
+Liberty: /home/hathannhtrunh/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib

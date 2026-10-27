@@ -1,0 +1,8 @@
+name: Test Action cua Trung
+on: [push]
+jobs:
+  say_hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Chao ban Ha Thanh Trung! GitHub Actions dang hoat dong rat tot!"
+      
