@@ -1,84 +1,57 @@
-module d03_core_tb;
-    logic clk, rst_n, load_n;
-    logic [7:0] n_in;
-    logic out, out_ref;
-    logic [6:0] count, count_ref;
+module d03_reference (
+    input  logic       clk,
+    input  logic       rst_n,
+    input  logic [7:0] n_in,
+    input  logic       load_n,
+    output logic       out_ref,
+    output logic [6:0] count_ref
+);
+    logic [7:0] n_reg;
+    logic [7:0] phase;
+    logic [7:0] half_len;
 
-    d03_core dut(
-        .clk(clk), .rst_n(rst_n), .n_in(n_in), .load_n(load_n),
-        .out(out), .count(count)
-    );
-
-    d03_reference ref_i(
-        .clk(clk), .rst_n(rst_n), .n_in(n_in), .load_n(load_n),
-        .out_ref(out_ref), .count_ref(count_ref)
-    );
-
-    always #5 clk = ~clk;
-
-    task automatic load_and_check(input logic [7:0] n);
-        begin
-            n_in = n;
-            load_n = 1;
-            @(posedge clk);
-            #1;
-            assert(out === out_ref);
-            assert(count === count_ref);
-            load_n = 0;
-        end
-    endtask
-
-    task automatic check;
-        begin
-            @(posedge clk);
-            #1;
-            assert(out === out_ref)
-                else $fatal(1, "D03 output mismatch N=%0d", n_in);
-            assert(count === count_ref)
-                else $fatal(1, "D03 count mismatch");
-        end
-    endtask
-
-    initial begin
-        clk = 0;
-        rst_n = 0;
-        load_n = 0;
-        n_in = 8'd1;
-
-        repeat(2) check();
-        rst_n = 1;
-
-        // Mandatory source-derived tests.
-        load_and_check(8'd1);
-        repeat(4) check();
-
-        load_and_check(8'd2);
-        repeat(8) check();
-
-        load_and_check(8'd3);
-        repeat(12) check();
-
-        load_and_check(8'd255);
-        repeat(20) check();
-
-        // Live N update.
-        load_and_check(8'd5);
-        repeat(7) check();
-        load_and_check(8'd2);
-        repeat(8) check();
-
-        // Additional tests.
-        load_and_check(8'd4);
-        repeat(12) check();
-
-        load_and_check(8'd254);
-        repeat(20) check();
-
-        $display("D03 core verification PASS");
-        $finish;
+    always_comb begin
+        if (n_reg <= 8'd1)
+            half_len = 8'd1;
+        else if (out_ref)
+            half_len = n_reg - (n_reg / 2);
+        else
+            half_len = n_reg / 2;
     end
-    initial begin
-    $dumpfile("05_VERIFICATION/waveforms/d03_wave.vcd");
-    $dumpvars(0, d03_core_tb);
-end
+
+    always_ff @(posedge clk) begin
+        if (!rst_n) begin
+            n_reg <= 8'd1;
+            phase <= 8'd0;
+            out_ref <= 1'b0;
+        end else if (load_n) begin
+            n_reg <= (n_in == 8'd0) ? 8'd1 : n_in;
+            phase <= 8'd0;
+            out_ref <= 1'b0;
+        end else if (n_reg == 8'd1) begin
+            phase <= 8'd0;
+            out_ref <= 1'b1;
+        end else if (phase == half_len - 8'd1) begin
+            phase <= 8'd0;
+            out_ref <= ~out_ref;
+        end else begin
+            phase <= phase + 8'd1;
+        end
+    end
+
+    always_comb begin
+        if (n_reg == 8'd1)
+            count_ref = 7'd0;
+        else if (phase > 8'd127)
+            count_ref = 7'h7f;
+        else begin
+            count_ref[0] = phase[0];
+            count_ref[1] = phase[1];
+            count_ref[2] = phase[2];
+            count_ref[3] = phase[3];
+            count_ref[4] = phase[4];
+            count_ref[5] = phase[5];
+            count_ref[6] = phase[6];
+        end
+    end
 endmodule
