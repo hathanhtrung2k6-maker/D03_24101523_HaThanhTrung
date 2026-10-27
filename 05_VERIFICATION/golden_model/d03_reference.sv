@@ -6,42 +6,52 @@ module d03_reference (
     output logic       out_ref,
     output logic [6:0] count_ref
 );
-    integer n_ref;
-    integer phase_ref;
-    integer interval_ref;
+    logic [7:0] n_reg;
+    logic [7:0] phase;
+    logic [7:0] half_len;
+
+    always_comb begin
+        if (n_reg <= 8'd1)
+            half_len = 8'd1;
+        else if (out_ref)
+            half_len = n_reg - (n_reg / 2);
+        else
+            half_len = n_reg / 2;
+    end
 
     always_ff @(posedge clk) begin
         if (!rst_n) begin
-            n_ref     <= 1;
-            phase_ref <= 0;
-            out_ref   <= 0;
+            n_reg <= 8'd1;
+            phase <= 8'd0;
+            out_ref <= 1'b0;
         end else if (load_n) begin
-            n_ref     <= (n_in == 0) ? 1 : n_in;
-            phase_ref <= 0;
-            out_ref   <= 0;
-        end else if (n_ref == 1) begin
-            n_ref     <= 1;
-            phase_ref <= 0;
-            out_ref   <= 1;
+            n_reg <= (n_in == 8'd0) ? 8'd1 : n_in;
+            phase <= 8'd0;
+            out_ref <= 1'b0;
+        end else if (n_reg == 8'd1) begin
+            phase <= 8'd0;
+            out_ref <= 1'b1;
+        end else if (phase == half_len - 8'd1) begin
+            phase <= 8'd0;
+            out_ref <= ~out_ref;
         end else begin
-            if (out_ref)
-                interval_ref = n_ref - (n_ref / 2);
-            else
-                interval_ref = n_ref / 2;
-
-            if (phase_ref == interval_ref - 1) begin
-                phase_ref <= 0;
-                out_ref   <= ~out_ref;
-            end else begin
-                phase_ref <= phase_ref + 1;
-            end
+            phase <= phase + 8'd1;
         end
     end
 
     always_comb begin
-        if (phase_ref > 127)
+        if (n_reg == 8'd1)
+            count_ref = 7'd0;
+        else if (phase > 8'd127)
             count_ref = 7'h7f;
-        else
-            count_ref = phase_ref[6:0];
+        else begin
+            count_ref[0] = phase[0];
+            count_ref[1] = phase[1];
+            count_ref[2] = phase[2];
+            count_ref[3] = phase[3];
+            count_ref[4] = phase[4];
+            count_ref[5] = phase[5];
+            count_ref[6] = phase[6];
+        end
     end
 endmodule
