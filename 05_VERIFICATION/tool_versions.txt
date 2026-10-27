@@ -1,1 +1,1 @@
-Icarus Verilog version 14.0 (devel) (s20260301-631-gce9868196-dirty)
+Icarus Verilog version 12.0 (stable) ()

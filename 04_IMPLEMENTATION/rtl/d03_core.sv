@@ -44,7 +44,14 @@ module d03_core (
             count = 7'd0;
         else if (phase > 8'd127)
             count = 7'h7f;
-        else
-            count = phase[6:0];
+        else begin
+            count[0] = phase[0];
+            count[1] = phase[1];
+            count[2] = phase[2];
+            count[3] = phase[3];
+            count[4] = phase[4];
+            count[5] = phase[5];
+            count[6] = phase[6];
+        end
     end
 endmodule
