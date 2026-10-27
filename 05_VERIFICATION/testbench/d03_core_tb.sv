@@ -48,7 +48,6 @@ module d03_core_tb;
         repeat(2) check();
         rst_n = 1;
 
-        // Mandatory source-derived tests.
         load_and_check(8'd1);
         repeat(4) check();
 
@@ -61,13 +60,11 @@ module d03_core_tb;
         load_and_check(8'd255);
         repeat(20) check();
 
-        // Live N update.
         load_and_check(8'd5);
         repeat(7) check();
         load_and_check(8'd2);
         repeat(8) check();
 
-        // Additional tests.
         load_and_check(8'd4);
         repeat(12) check();
 
@@ -77,9 +74,9 @@ module d03_core_tb;
         $display("D03 core verification PASS");
         $finish;
     end
-s
+
     initial begin
-        $dumpfile("05_VERIFICATION/waveforms/d03_wave.vcd");
+        $dumpfile("waveforms/d03_wave.vcd");
         $dumpvars(0, d03_core_tb);
     end
 endmodule
