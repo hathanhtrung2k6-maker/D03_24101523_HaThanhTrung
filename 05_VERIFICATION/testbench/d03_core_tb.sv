@@ -77,7 +77,7 @@ module d03_core_tb;
         $display("D03 core verification PASS");
         $finish;
     end
-
+s
     initial begin
         $dumpfile("05_VERIFICATION/waveforms/d03_wave.vcd");
         $dumpvars(0, d03_core_tb);
