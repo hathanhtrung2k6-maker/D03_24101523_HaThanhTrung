@@ -1,1 +1,3 @@
-VCD Error: 05_VERIFICATION/testbench/d03_core_tb.sv:80: Unable to open 05_VERIFICATION/waveforms/d03_wave.vcd for output.
+VCD info: dumpfile waveforms/d03_wave.vcd opened for output.
+D03 core verification PASS
+05_VERIFICATION/testbench/d03_core_tb.sv:75: $finish called at 1006 (1s)
