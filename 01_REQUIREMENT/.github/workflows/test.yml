@@ -1,8 +1,25 @@
-name: Test Action cua Trung
+name: Verilog Simulation CI
+
 on: [push]
+
 jobs:
-  say_hello:
+  simulate:
+    name: Icarus Verilog Simulation
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo "Chao ban Ha Thanh Trung! GitHub Actions dang hoat dong rat tot!"
-      
+      - name: Tải mã nguồn về máy chủ GitHub
+        uses: actions/checkout@v3
+
+      - name: Cài đặt công cụ Icarus Verilog
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y iverilog
+
+      - name: Biên dịch và chạy mô phỏng đồ án
+        run: |
+          echo "Đang biên dịch file RTL và Testbench..."
+          iverilog -g2012 -o d03_sim 08_ORIGINAL_SOURCE/rtl/*.sv 08_ORIGINAL_SOURCE/testbench/*.sv
+          
+          echo "Đang chạy mô phỏng (Simulation)..."
+          vvp d03_sim
