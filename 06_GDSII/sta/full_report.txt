@@ -1,0 +1,31 @@
+OpenSTA 2.0.17 GITDIR-NOT Copyright (c) 2019, Parallax Software, Inc.
+License GPLv3: GNU GPL version 3 <http://gnu.org/licenses/gpl.html>
+
+This is free software, and you are free to change and redistribute it
+under certain conditions; type `show_copying' for details. 
+This program comes with ABSOLUTELY NO WARRANTY; for details type `show_warranty'.
+Warning: 03_run_sta.tcl, 6 report_checks -group_path_count is not a known keyword or flag.
+Error: 03_run_sta.tcl, 6 positional arguments not supported.
+Warning: 03_run_sta.tcl, 7 report_checks -group_path_count is not a known keyword or flag.
+Error: 03_run_sta.tcl, 7 positional arguments not supported.
+Warning: 03_run_sta.tcl, 8 report_checks -group_path_count is not a known keyword or flag.
+Error: 03_run_sta.tcl, 8 positional arguments not supported.
+wns 0.00
+tns 0.00
+Group                  Internal  Switching    Leakage      Total
+                          Power      Power      Power      Power
+----------------------------------------------------------------
+Sequential             0.00e+00   4.20e-06   1.43e-10   4.20e-06  29.3%
+Combinational          0.00e+00   1.01e-05   1.97e-10   1.01e-05  70.7%
+Macro                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+Pad                    0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+----------------------------------------------------------------
+Total                  0.00e+00   1.43e-05   3.41e-10   1.43e-05 100.0%
+                           0.0%     100.0%       0.0%
+[?2004hOpenSTA> cat 06_GDSII/sta/full_report.txtcat 06_GDSII/sta/full_report.txtcat 06_GDSII/sta/full_report.txtcat 06_GDSII/sta/full_report.txt
+[?2004l[?2004hOpenSTA> cat 06_GDSII/sta/full_report.txt
+[?2004l[?2004hOpenSTA> 
+[?2004l[?2004hOpenSTA> cat 06_GDSII/sta/full_report.txtcat 06_GDSII/sta/full_report.txtcat 06_GDSII/sta/full_report.txt
+[?2004l[?2004hOpenSTA> ưq
+[?2004l[?2004hOpenSTA> cat 06_GDSII/sta/full_report.txtcat 06_GDSII/sta/full_report.txt
+[?2004l[?2004hOpenSTA> [KOpenSTA> exitexit^Z[?2004l

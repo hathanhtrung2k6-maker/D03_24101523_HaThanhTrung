@@ -1,0 +1,7 @@
+exit
+exit
+exit
+ẽit
+exit
+sta 04_IMPLEMENTATION/scripts/03_run_sta.tcl > 06_GDSII/sta/full_report.txt
+exit
