@@ -9,7 +9,7 @@ OUT=06_GDSII/synthesis; mkdir -p "$OUT"
 
 command -v yosys >/dev/null || { echo "[LOI] thieu 'yosys' (sudo apt install yosys)"; exit 2; }
 
-LIB="/home/hathanhtrunh/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib"
+LIB="$HOME/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib"
 
 
 yosys -V | head -1 | tee "$OUT/tool_versions.txt"
