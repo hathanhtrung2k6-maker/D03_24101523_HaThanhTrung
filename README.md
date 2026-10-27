@@ -83,3 +83,4 @@ bash    04_IMPLEMENTATION/scripts/04_run_librelane.sh     # cần PDK sky130A
 *Nguồn chuẩn: `Project_Charter_80_De.docx` — mục D03. Gói nguồn: `D03_FINAL_MENTOR_PACKAGE_v1_0`.*
 *Hồ sơ này không đưa ra khẳng định nào về sign-off, tape-out, chế tạo hay kiểm tra sau chế
 tạo — những mục nằm ngoài phạm vi đề tài theo Charter mục 3.*
+# Test auto pushss
