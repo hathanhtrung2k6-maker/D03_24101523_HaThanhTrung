@@ -1,0 +1,63 @@
+{
+   "creator": "Yosys 0.62 (git sha1 7326bb7d6641500ecb285c291a54a662cb1e76cf, clang++ 21.1.2 -fPIC -O3)",
+   "invocation": "stat -json -liberty /home/lucero/projects/RTL2GDS_UNIFIED_80_v2.0/D03_Bo_chia_tan_lap_trinh_duoc_chia_N_N_1_255/04_IMPLEMENTATION/scripts/runs/RUN_2026-09-25_12-49-45/tmp/556adc1549184cc6b965f9dedfd3f2ed.lib ",
+   "modules": {
+      "\\d03_core": {
+         "num_wires":         183,
+         "num_wire_bits":     227,
+         "num_pub_wires":     8,
+         "num_pub_wire_bits": 31,
+         "num_ports":         6,
+         "num_port_bits":     19,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         204,
+         "num_submodules":       0,
+         "area":              361.596800,
+         "sequential_area":    361.596800,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 50,
+            "$_AND_": 3,
+            "$_MUX_": 33,
+            "$_NAND_": 3,
+            "$_NOR_": 12,
+            "$_NOT_": 6,
+            "$_ORNOT_": 19,
+            "$_OR_": 25,
+            "$_XNOR_": 15,
+            "$_XOR_": 21,
+            "sky130_fd_sc_hd__dfxtp_2": 17
+         }
+      }
+   },
+      "design": {
+         "num_wires":         183,
+         "num_wire_bits":     227,
+         "num_pub_wires":     8,
+         "num_pub_wire_bits": 31,
+         "num_ports":         6,
+         "num_port_bits":     19,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         204,
+         "num_submodules":       0,
+         "area":              361.596800,
+         "sequential_area":    361.596800,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 50,
+            "$_AND_": 3,
+            "$_MUX_": 33,
+            "$_NAND_": 3,
+            "$_NOR_": 12,
+            "$_NOT_": 6,
+            "$_ORNOT_": 19,
+            "$_OR_": 25,
+            "$_XNOR_": 15,
+            "$_XOR_": 21,
+            "sky130_fd_sc_hd__dfxtp_2": 17
+         }
+      }
+}
+

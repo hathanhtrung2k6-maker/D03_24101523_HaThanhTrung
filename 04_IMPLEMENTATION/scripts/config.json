@@ -1,0 +1,38 @@
+{
+  "project_id": "D03",
+  "title": "Bộ chia tần lập trình được (chia N, N = 1–255)",
+  "group": "D · Bộ đếm và chia tần",
+  "difficulty": "Trung bình",
+  "circuit_type": "Tuần tự",
+  "charter_scale": "~150–220 cell · 1×1 tile",
+  "top_module": "d03_core",
+  "clock_port": "clk",
+  "has_clock": true,
+  "expected_ff_zero": false,
+  "technology": "sky130A",
+  "std_cell_library": "sky130_fd_sc_hd",
+  "liberty_corner": "tt_025C_1v80",
+  "flow": "LibreLane/OpenROAD",
+  "measured": {
+    "sim": "PASS",
+    "pyref": "PASS",
+    "synth": "PASS",
+    "sta": "PASS",
+    "cells": 101,
+    "flip_flops": 17,
+    "area_um2": 975.936,
+    "critical_path_ns": 2.5,
+    "startpoint": "_169_",
+    "endpoint": "_167_",
+    "power_total_w": "9.81e-05"
+  },
+  "not_run": [
+    "floorplan",
+    "placement",
+    "routing",
+    "drc",
+    "lvs",
+    "gds"
+  ],
+  "source_dir_origin": "D03_FINAL_MENTOR_PACKAGE_v1_0"
+}

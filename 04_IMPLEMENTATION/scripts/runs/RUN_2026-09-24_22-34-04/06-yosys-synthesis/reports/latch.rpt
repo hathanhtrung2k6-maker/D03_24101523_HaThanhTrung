@@ -1,0 +1,4 @@
+
+15. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\d03_core.\count' from process `\d03_core.$proc$/home/lucero/projects/RTL2GDS_UNIFIED_80_v2.0/D03_Bo_chia_tan_lap_trinh_duoc_chia_N_N_1_255/04_IMPLEMENTATION/rtl/d03_core.sv:42$15'.
+No latch inferred for signal `\d03_core.\half_len' from process `\d03_core.$proc$/home/lucero/projects/RTL2GDS_UNIFIED_80_v2.0/D03_Bo_chia_tan_lap_trinh_duoc_chia_N_N_1_255/04_IMPLEMENTATION/rtl/d03_core.sv:13$1'.

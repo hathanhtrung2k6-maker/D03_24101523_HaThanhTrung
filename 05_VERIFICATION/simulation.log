@@ -1,0 +1,2 @@
+D03 core verification PASS
+05_VERIFICATION/testbench/d03_core_tb.sv:78: $finish called at 1006 (1s)

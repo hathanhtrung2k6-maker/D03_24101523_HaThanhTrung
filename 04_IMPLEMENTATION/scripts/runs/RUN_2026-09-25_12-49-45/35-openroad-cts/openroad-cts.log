@@ -1,0 +1,136 @@
+Reading timing models for corner max_tt_025C_1v80…
+Reading timing library for the 'max_tt_025C_1v80' corner at '/home/lucero/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+Reading timing models for corner min_ss_100C_1v60…
+Reading timing library for the 'min_ss_100C_1v60' corner at '/home/lucero/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib'…
+Reading timing models for corner nom_tt_025C_1v80…
+Reading timing library for the 'nom_tt_025C_1v80' corner at '/home/lucero/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+[WARNING STA-1140] /home/lucero/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib line 1, library sky130_fd_sc_hd__tt_025C_1v80 already exists.
+Reading timing models for corner max_ff_n40C_1v95…
+Reading timing library for the 'max_ff_n40C_1v95' corner at '/home/lucero/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib'…
+Reading timing models for corner nom_ff_n40C_1v95…
+Reading timing library for the 'nom_ff_n40C_1v95' corner at '/home/lucero/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib'…
+[WARNING STA-1140] /home/lucero/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib line 1, library sky130_fd_sc_hd__ff_n40C_1v95 already exists.
+Reading timing models for corner max_ss_100C_1v60…
+Reading timing library for the 'max_ss_100C_1v60' corner at '/home/lucero/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib'…
+[WARNING STA-1140] /home/lucero/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib line 1, library sky130_fd_sc_hd__ss_100C_1v60 already exists.
+Reading timing models for corner min_tt_025C_1v80…
+Reading timing library for the 'min_tt_025C_1v80' corner at '/home/lucero/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+[WARNING STA-1140] /home/lucero/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib line 1, library sky130_fd_sc_hd__tt_025C_1v80 already exists.
+Reading timing models for corner nom_ss_100C_1v60…
+Reading timing library for the 'nom_ss_100C_1v60' corner at '/home/lucero/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib'…
+[WARNING STA-1140] /home/lucero/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib line 1, library sky130_fd_sc_hd__ss_100C_1v60 already exists.
+Reading timing models for corner min_ff_n40C_1v95…
+Reading timing library for the 'min_ff_n40C_1v95' corner at '/home/lucero/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib'…
+[WARNING STA-1140] /home/lucero/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib line 1, library sky130_fd_sc_hd__ff_n40C_1v95 already exists.
+Reading OpenROAD database at '/home/lucero/projects/RTL2GDS_UNIFIED_80_v2.0/D03_Bo_chia_tan_lap_trinh_duoc_chia_N_N_1_255/04_IMPLEMENTATION/scripts/runs/RUN_2026-09-25_12-49-45/34-openroad-detailedplacement/d03_core.odb'…
+Reading design constraints file at '/home/lucero/projects/RTL2GDS_UNIFIED_80_v2.0/D03_Bo_chia_tan_lap_trinh_duoc_chia_N_N_1_255/04_IMPLEMENTATION/constraints/design.sdc'…
+[INFO] No information on clock propagation in input SDC file-- propagating all clocks.
+[INFO] Configuring cts characterization…
++ configure_cts_characterization 
+[INFO] Performing clock tree synthesis…
+[INFO] Looking for the following net(s): clk
+[INFO] Running Clock Tree Synthesis…
++ clock_tree_synthesis -buf_list sky130_fd_sc_hd__clkbuf_8 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_2 -root_buf sky130_fd_sc_hd__clkbuf_16 -sink_clustering_enable -apply_ndr half
+[INFO CTS-0050] Root buffer is sky130_fd_sc_hd__clkbuf_16.
+[INFO CTS-0051] Sink buffer is sky130_fd_sc_hd__clkbuf_4.
+[INFO CTS-0052] The following clock buffers will be used for CTS:
+                    sky130_fd_sc_hd__clkbuf_2
+                    sky130_fd_sc_hd__clkbuf_4
+                    sky130_fd_sc_hd__clkbuf_8
+[INFO CTS-0049] Characterization buffer is sky130_fd_sc_hd__clkbuf_8.
+[INFO CTS-0007] Net "clk" found for clock "clk".
+[INFO CTS-0010]  Clock net "clk" has 17 sinks.
+[INFO CTS-0008] TritonCTS found 1 clock nets.
+[INFO CTS-0097] Characterization used 3 buffer(s) types.
+[INFO CTS-0201] 0 blockages from hard placement blockages and placed macros will be used.
+[INFO CTS-0027] Generating H-Tree topology for net clk.
+[INFO CTS-0028]  Total number of sinks: 17.
+[INFO CTS-0090]  Sinks will be clustered based on buffer max cap.
+[INFO CTS-0030]  Number of static layers: 0.
+[INFO CTS-0020]  Wire segment unit: 13600  dbu (13 um).
+[INFO CTS-0023]  Original sink region: [(7165, 12180), (49485, 61140)].
+[INFO CTS-0024]  Normalized sink region: [(0.526838, 0.895588), (3.6386, 4.49559)].
+[INFO CTS-0025]     Width:  3.1118.
+[INFO CTS-0026]     Height: 3.6000.
+ Level 1
+    Direction: Vertical
+    Sinks per sub-region: 9
+    Sub-region size: 3.1118 X 1.8000
+[INFO CTS-0034]     Segment length (rounded): 1.
+[INFO CTS-0032]  Stop criterion found. Max number of sinks is 15.
+[INFO CTS-0035]  Number of sinks covered: 17.
+[INFO CTS-0018]     Created 3 clock buffers.
+[INFO CTS-0012]     Minimum number of buffers in the clock path: 2.
+[INFO CTS-0013]     Maximum number of buffers in the clock path: 2.
+[INFO CTS-0015]     Created 3 clock nets.
+[INFO CTS-0016]     Fanout distribution for the current clock = 8:1, 9:1..
+[INFO CTS-0017]     Max level of the clock tree: 1.
+[INFO CTS-0098] Clock net "clk"
+[INFO CTS-0099]  Sinks 18
+[INFO CTS-0100]  Leaf buffers 0
+[INFO CTS-0101]  Average sink wire length 88.91 um
+[INFO CTS-0102]  Path depth 2 - 2
+[INFO CTS-0207]  Dummy loads inserted 1
+[INFO] Repairing long wires on clock nets…
+[INFO RSZ-0058] Using max wire length 6884um.
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+[INFO ODB-0403] 16 connections made, 0 conflicts skipped.
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                                40     150.14
+  Tap cell                                 44      55.05
+  Clock buffer                              4      82.58
+  Timing Repair Buffer                     18     180.17
+  Inverter                                  4      15.01
+  Sequential cell                          17     361.60
+  Multi-Input combinational cell           85     845.81
+  Total                                   212    1690.37
+Writing OpenROAD database to '/home/lucero/projects/RTL2GDS_UNIFIED_80_v2.0/D03_Bo_chia_tan_lap_trinh_duoc_chia_N_N_1_255/04_IMPLEMENTATION/scripts/runs/RUN_2026-09-25_12-49-45/35-openroad-cts/d03_core.odb'…
+Writing netlist to '/home/lucero/projects/RTL2GDS_UNIFIED_80_v2.0/D03_Bo_chia_tan_lap_trinh_duoc_chia_N_N_1_255/04_IMPLEMENTATION/scripts/runs/RUN_2026-09-25_12-49-45/35-openroad-cts/d03_core.nl.v'…
+Writing powered netlist to '/home/lucero/projects/RTL2GDS_UNIFIED_80_v2.0/D03_Bo_chia_tan_lap_trinh_duoc_chia_N_N_1_255/04_IMPLEMENTATION/scripts/runs/RUN_2026-09-25_12-49-45/35-openroad-cts/d03_core.pnl.v'…
+Writing layout to '/home/lucero/projects/RTL2GDS_UNIFIED_80_v2.0/D03_Bo_chia_tan_lap_trinh_duoc_chia_N_N_1_255/04_IMPLEMENTATION/scripts/runs/RUN_2026-09-25_12-49-45/35-openroad-cts/d03_core.def'…
+Writing timing constraints to '/home/lucero/projects/RTL2GDS_UNIFIED_80_v2.0/D03_Bo_chia_tan_lap_trinh_duoc_chia_N_N_1_255/04_IMPLEMENTATION/scripts/runs/RUN_2026-09-25_12-49-45/35-openroad-cts/d03_core.sdc'…
+[INFO] Legalizing…
++ detailed_placement -max_displacement  500 100 
+Placement Analysis
+---------------------------------
+total displacement         14.0 u
+average displacement        0.1 u
+max displacement            4.2 u
+original HPWL            2053.9 u
+legalized HPWL           2137.2 u
+delta HPWL                    4 %
+
+[INFO DPL-0020] Mirrored 50 instances
+[INFO DPL-0021] HPWL before            2137.2 u
+[INFO DPL-0022] HPWL after             2056.7 u
+[INFO DPL-0023] HPWL delta               -3.8 %
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+[INFO ODB-0403] 0 connections made, 0 conflicts skipped.
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                                40     150.14
+  Tap cell                                 44      55.05
+  Clock buffer                              4      82.58
+  Timing Repair Buffer                     18     180.17
+  Inverter                                  4      15.01
+  Sequential cell                          17     361.60
+  Multi-Input combinational cell           85     845.81
+  Total                                   212    1690.37
+Writing OpenROAD database to '/home/lucero/projects/RTL2GDS_UNIFIED_80_v2.0/D03_Bo_chia_tan_lap_trinh_duoc_chia_N_N_1_255/04_IMPLEMENTATION/scripts/runs/RUN_2026-09-25_12-49-45/35-openroad-cts/d03_core.odb'…
+Writing netlist to '/home/lucero/projects/RTL2GDS_UNIFIED_80_v2.0/D03_Bo_chia_tan_lap_trinh_duoc_chia_N_N_1_255/04_IMPLEMENTATION/scripts/runs/RUN_2026-09-25_12-49-45/35-openroad-cts/d03_core.nl.v'…
+Writing powered netlist to '/home/lucero/projects/RTL2GDS_UNIFIED_80_v2.0/D03_Bo_chia_tan_lap_trinh_duoc_chia_N_N_1_255/04_IMPLEMENTATION/scripts/runs/RUN_2026-09-25_12-49-45/35-openroad-cts/d03_core.pnl.v'…
+Writing layout to '/home/lucero/projects/RTL2GDS_UNIFIED_80_v2.0/D03_Bo_chia_tan_lap_trinh_duoc_chia_N_N_1_255/04_IMPLEMENTATION/scripts/runs/RUN_2026-09-25_12-49-45/35-openroad-cts/d03_core.def'…
+Writing timing constraints to '/home/lucero/projects/RTL2GDS_UNIFIED_80_v2.0/D03_Bo_chia_tan_lap_trinh_duoc_chia_N_N_1_255/04_IMPLEMENTATION/scripts/runs/RUN_2026-09-25_12-49-45/35-openroad-cts/d03_core.sdc'…
+%OL_CREATE_REPORT cts.rpt
+Total number of Clock Roots: 1.
+Total number of Buffers Inserted: 3.
+Total number of Clock Subnets: 3.
+Total number of Sinks: 17.
+Cells used:
+  sky130_fd_sc_hd__clkbuf_16: 3
+Dummys used:
+  sky130_fd_sc_hd__clkbuf_4: 1
+%OL_END_REPORT

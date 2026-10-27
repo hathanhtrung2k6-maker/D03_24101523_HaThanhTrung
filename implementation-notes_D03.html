@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D03 — Bộ chia tần lập trình được (chia N, N = 1–255) · Ghi chú thực hiện</title>
+<style>
+:root{
+  --bg:#ffffff; --fg:#1a1d21; --muted:#5c6570; --line:#e3e7eb;
+  --accent:#1f5fa9; --accent-soft:#eef4fb; --code-bg:#f5f7f9;
+  --ok:#137a4d; --ok-bg:#e8f6ee; --warn:#8a5a00; --warn-bg:#fdf4e2;
+  --bad:#a52020; --bad-bg:#fceded; --open:#7a5ba8; --open-bg:#f3eefa;
+  --maxw:960px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15181c; --fg:#e6e9ec; --muted:#98a2ad; --line:#2a2f36;
+    --accent:#6fa8e0; --accent-soft:#1c2733; --code-bg:#1b1f24;
+    --ok:#5cc08d; --ok-bg:#16291f; --warn:#d8a54a; --warn-bg:#2a2314;
+    --bad:#e88b8b; --bad-bg:#2b1a1a; --open:#b79ad6; --open-bg:#241d2e;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15181c; --fg:#e6e9ec; --muted:#98a2ad; --line:#2a2f36;
+  --accent:#6fa8e0; --accent-soft:#1c2733; --code-bg:#1b1f24;
+  --ok:#5cc08d; --ok-bg:#16291f; --warn:#d8a54a; --warn-bg:#2a2314;
+  --bad:#e88b8b; --bad-bg:#2b1a1a; --open:#b79ad6; --open-bg:#241d2e;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  -webkit-text-size-adjust:100%;
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 16px 96px}
+header.doc{
+  border-bottom:1px solid var(--line); margin-bottom:28px; padding:36px 0 22px;
+}
+header.doc .eyebrow{
+  font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--muted); font-weight:600; margin-bottom:10px;
+}
+header.doc h1{font-size:clamp(24px,4.4vw,34px); line-height:1.25; margin:0 0 14px}
+.badges{display:flex; flex-wrap:wrap; gap:7px; margin-top:6px}
+.badge{
+  font-size:12.5px; padding:3px 10px; border-radius:999px;
+  border:1px solid var(--line); color:var(--muted); background:var(--accent-soft);
+  white-space:nowrap;
+}
+.badge.ok{color:var(--ok); background:var(--ok-bg); border-color:transparent}
+.badge.warn{color:var(--warn); background:var(--warn-bg); border-color:transparent}
+.badge.bad{color:var(--bad); background:var(--bad-bg); border-color:transparent}
+.badge.open{color:var(--open); background:var(--open-bg); border-color:transparent}
+nav.toc{
+  border:1px solid var(--line); border-radius:10px; padding:16px 20px;
+  margin:0 0 32px; background:var(--accent-soft);
+}
+nav.toc p{margin:0 0 8px; font-weight:700; font-size:13px; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted)}
+nav.toc ul{margin:0; padding-left:20px}
+nav.toc li{margin:3px 0}
+nav.toc a{color:var(--fg); text-decoration:none}
+nav.toc a:hover{color:var(--accent); text-decoration:underline}
+nav.toc ul ul{padding-left:18px; font-size:14.5px}
+h2{font-size:22px; margin:40px 0 12px; padding-bottom:6px; border-bottom:1px solid var(--line)}
+h3{font-size:18px; margin:28px 0 8px}
+h4{font-size:16px; margin:22px 0 6px; color:var(--muted)}
+p{margin:12px 0}
+a{color:var(--accent)}
+ul,ol{padding-left:24px}
+li{margin:4px 0}
+code{
+  font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  font-size:.9em; background:var(--code-bg); padding:1.5px 5px; border-radius:4px;
+}
+pre{
+  background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:14px 16px; overflow-x:auto; line-height:1.55; font-size:13.5px;
+}
+pre code{background:none; padding:0; font-size:inherit}
+blockquote{
+  margin:16px 0; padding:2px 18px; border-left:3px solid var(--accent);
+  background:var(--accent-soft); border-radius:0 8px 8px 0; color:var(--fg);
+}
+blockquote p{margin:10px 0}
+.tablewrap{overflow-x:auto; margin:16px 0; -webkit-overflow-scrolling:touch}
+table{border-collapse:collapse; width:100%; font-size:14.5px; min-width:420px}
+th,td{border:1px solid var(--line); padding:7px 11px; text-align:left; vertical-align:top}
+th{background:var(--accent-soft); font-weight:650; white-space:nowrap}
+tbody tr:nth-child(even) td{background:color-mix(in srgb, var(--code-bg) 55%, transparent)}
+hr{border:0; border-top:1px solid var(--line); margin:34px 0}
+footer.doc{
+  margin-top:56px; padding-top:18px; border-top:1px solid var(--line);
+  color:var(--muted); font-size:13.5px;
+}
+.themebtn{
+  position:fixed; right:14px; bottom:14px; z-index:10;
+  border:1px solid var(--line); background:var(--bg); color:var(--muted);
+  border-radius:999px; padding:8px 14px; font-size:13px; cursor:pointer;
+}
+.themebtn:hover{color:var(--fg)}
+@media (max-width:640px){
+  .wrap{padding:0 16px 72px}
+  header.doc{padding:26px 0 18px}
+  nav.toc{padding:14px 16px}
+}
+@media print{
+  .themebtn{display:none}
+  nav.toc{break-inside:avoid}
+  pre,table,blockquote{break-inside:avoid}
+  body{font-size:11pt}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="doc">
+  <div class="eyebrow">RTL2GDS · Đề D03 · Ghi chú thực hiện</div>
+  <h1>D03 — Bộ chia tần lập trình được (chia N, N = 1–255) · Ghi chú thực hiện</h1>
+  <div class="badges"><span class="badge ">D · Bộ đếm và chia tần</span><span class="badge ">Độ khó: Trung bình</span><span class="badge ">Loại mạch: Tuần tự</span><span class="badge ok">Mô phỏng: PASS</span><span class="badge ">Tổng hợp: 101 cell · 17 FF</span><span class="badge ">Đường tới hạn: 2,5 ns</span><span class="badge warn">Physical design: CHƯA CHẠY</span></div>
+</header>
+<nav class="toc"><p>Mục lục</p><ul><li><a href="#1-bai-toan-nay-thuc-chat-la-gi">1. Bài toán này thực chất là gì</a></li><li><a href="#2-ban-chat-ky-thuat-co-che-hoat-dong">2. Bản chất kỹ thuật — cơ chế hoạt động</a></li><li><a href="#3-doc-ma-nguon-rtl-lam-gi-tung-dong-quan-trong">3. Đọc mã nguồn: RTL làm gì, từng dòng quan trọng</a></li><li><a href="#4-vi-sao-chon-kien-truc-nay">4. Vì sao chọn kiến trúc này</a></li><li><a href="#5-cach-thuc-hien-lo-trinh-8-buoc-tu-dac-ta-toi-gdsii">5. Cách thực hiện — lộ trình 8 bước từ đặc tả tới GDSII</a></li><li><a href="#6-so-lieu-that-da-do-duoc-va-cach-doc-chung">6. Số liệu thật đã đo được và cách đọc chúng</a></li><li><a href="#7-tra-loi-cac-cau-hoi-ky-thuat-cua-charter-muc-2">7. Trả lời các câu hỏi kỹ thuật của Charter (mục 2)</a></li><li><a href="#8-tra-loi-cau-phan-tich-rieng-charter-muc-9">8. Trả lời câu phân tích riêng (Charter mục 9)</a></li><li><a href="#9-nhung-cho-sinh-vien-hay-sai-va-cach-phat-hien">9. Những chỗ sinh viên hay sai và cách phát hiện</a></li><li><a href="#10-cau-hoi-mentor-nen-dat-khi-bao-ve">10. Câu hỏi mentor nên đặt khi bảo vệ</a></li><li><a href="#11-gioi-han-da-chung-minh-duoc-gi-chua-chung-minh-duoc-gi">11. Giới hạn: đã chứng minh được gì, chưa chứng minh được gì</a></li></ul></nav>
+<main>
+<h2 id="1-bai-toan-nay-thuc-chat-la-gi">1. Bài toán này thực chất là gì</h2>
+<p>Bề ngoài, D03 chỉ là "đếm N chu kỳ rồi lật một bit". Thực chất đề này được dựng lên quanh <strong>một
+sự thật số học không thể tránh</strong>: <strong>với N lẻ, không tồn tại sóng vuông chu kỳ N có chu kỳ nhiệm
+vụ đúng 50 %.</strong> Vì <code>N/2</code> không phải số nguyên, mà số chu kỳ clock thì buộc phải nguyên.</p>
+<p>Đề này vì thế không hỏi "em có làm được không", mà hỏi <strong>"em xử lý điều không thể như thế
+nào"</strong>. Có ba lối thoát: (a) chấp nhận duty lệch và giữ chu kỳ đúng N; (b) ép duty 50 % bằng
+cách chia tiếp cho 2, chấp nhận chu kỳ thành 2N; (c) phát xung rộng 1 chu kỳ thay vì sóng
+vuông. RTL chọn (a). Charter mục 10 nói thẳng: <em>"Giấu vấn đề N lẻ thay vì nêu ra… nêu ra được
+điểm cao hơn giấu."</em></p>
+<p>Bối cảnh Charter — tạo nhịp lấy mẫu cho bộ ghi dữ liệu môi trường — làm lựa chọn (a) hợp lý:
+tầng ngoài dùng <strong>cạnh lên</strong> của <code>out</code> làm mốc khởi động ADC, nên khoảng cách giữa hai cạnh
+lên (chu kỳ) mới quan trọng, còn mức cao dài bao nhiêu thì không.</p>
+<h2 id="2-ban-chat-ky-thuat-co-che-hoat-dong">2. Bản chất kỹ thuật — cơ chế hoạt động</h2>
+<p>Cơ chế cốt lõi gói trong một câu: <strong>độ dài nửa chu kỳ tiếp theo phụ thuộc vào mức ra hiện
+tại.</strong></p>
+<pre><code>   half_len  =  out ? ⌈N/2⌉ : ⌊N/2⌋           và   ⌈N/2⌉ + ⌊N/2⌋ = N  ∀N ∈ ℤ
+</code></pre>
+<p>Đẳng thức bên phải là toàn bộ chứng minh cho tính đúng đắn: dù N chẵn hay lẻ, hai nửa cộng lại
+luôn <strong>đúng bằng N</strong>. Phần lẻ được dồn vào nửa chu kỳ cao.</p>
+<p>Điều làm cơ chế này thú vị về mặt phần cứng là <code>out</code> <strong>lưỡng dụng</strong>: nó vừa là sản phẩm xuất ra
+cổng, vừa là <strong>chân chọn</strong> của mux <code>half_len</code>. Hệ quả tốt: không tốn thêm flip-flop nào cho
+phần điều khiển — 17 FF trong netlist bằng <strong>đúng</strong> 17 bit trạng thái RTL. Hệ quả xấu: <code>out</code>
+có fanout 6 và nằm ở <strong>đầu đường tới hạn</strong>.</p>
+<p>Cơ chế thứ hai, dễ bỏ sót: <strong><code>⌊N/2⌋</code> miễn phí còn <code>⌈N/2⌉</code> thì không.</strong> Chia 2 là dịch bit —
+không tốn cổng nào, chỉ là đánh lại chỉ số dây. Nhưng <code>N − ⌊N/2⌋</code> cần <strong>một bộ trừ 8 bit
+thật</strong>. Nói cách khác: <strong>toàn bộ chi phí phần cứng của việc hỗ trợ N lẻ nằm ở một bộ trừ và
+một mux.</strong> Đó là con số rất nhỏ so với nỗi sợ mà vấn đề "N lẻ" gây ra.</p>
+<p>Cơ chế thứ ba: <code>phase</code> so với <code>half_len − 1</code> chứ không phải <code>half_len</code>, vì <code>phase</code> đếm từ 0.
+Đây là chỗ lệch-một-đơn-vị (off-by-one) kinh điển, và RTL phải có nhánh <code>n_reg ≤ 1 ⟹
+half_len = 1</code> để <code>half_len − 1</code> không bao giờ tràn ngược thành <code>8'hFF</code>.</p>
+<h2 id="3-doc-ma-nguon-rtl-lam-gi-tung-dong-quan-trong">3. Đọc mã nguồn: RTL làm gì, từng dòng quan trọng</h2>
+<p><strong>Trái tim của đề</strong> (dòng 13–20):</p>
+<pre><code class="language-systemverilog">always_comb begin
+    if (n_reg &lt;= 8'd1)      half_len = 8'd1;
+    else if (out)           half_len = n_reg - (n_reg / 2);   // ⌈N/2⌉
+    else                    half_len = n_reg / 2;             // ⌊N/2⌋
+end
+</code></pre>
+<p>Ba điều cần chú ý:
+- Đây là <code>always_comb</code>, <strong>không</strong> phải <code>always_ff</code>. Nếu đăng ký <code>half_len</code> vào thanh ghi, chu
+  kỳ ra sẽ <strong>dài thêm 1</strong> với mọi N — lỗi tinh vi nhất của đề.
+- Nhánh <code>n_reg &lt;= 8'd1</code> <strong>không</strong> chỉ để xử lý N=1; nó còn chặn <code>n_reg = 0</code> (dù <code>n_reg = 0</code>
+  không thể xảy ra, hai lớp bảo vệ vẫn tốt hơn một).
+- Viết <code>n_reg - (n_reg / 2)</code> thay vì <code>(n_reg + 1) / 2</code> — hai biểu thức cho cùng kết quả nhưng
+  cái đầu <strong>không tràn</strong> khi <code>n_reg = 255</code> (<code>255 + 1 = 0</code> trong 8 bit!). Đây là một chi tiết
+  đúng và đáng khen.</p>
+<p><strong>Vòng lật</strong> (dòng 34–39):</p>
+<pre><code class="language-systemverilog">end else if (phase == half_len - 8'd1) begin
+    phase &lt;= 8'd0;
+    out   &lt;= ~out;
+end else begin
+    phase &lt;= phase + 8'd1;
+end
+</code></pre>
+<p>Ở nhánh <code>else</code>, <code>out</code> <strong>không được gán</strong>. Trong <code>always_ff</code> điều này đúng và an toàn — không
+gán nghĩa là giữ thanh ghi. Cùng cách viết đó trong <code>always_comb</code> sẽ <strong>suy ra latch</strong>.</p>
+<p><strong>Trường hợp đặc biệt</strong> (dòng 31–33): <code>else if (n_reg == 8'd1) begin phase &lt;= 0; out &lt;= 1'b1;
+end</code>. Chú ý: đây là <code>out &lt;= 1'b1</code> chứ không phải <code>out &lt;= ~out</code>. Nghĩa là <strong>"chia 1" cho ra một
+mức cao đứng yên, KHÔNG phải một tín hiệu 1:1 của clock.</strong> Hành vi này nhất quán với cả hai mô
+hình chuẩn nên testbench PASS — nhưng nó là một quyết định ngữ nghĩa cần ghi rõ trong tài liệu
+bàn giao (điểm W-1 ở <code>functional_spec.md</code>).</p>
+<p><strong>Cổng quan sát</strong> (dòng 42–49): <code>count</code> có một nhánh bão hoà <code>phase &gt; 8'd127 ⟹ 7'h7f</code>. Nhánh
+này là <strong>logic chết</strong> trong vận hành đúng, vì <code>phase &lt; half_len ≤ ⌈255/2⌉ = 128 ⟹ phase ≤ 127</code>
+(INV-2). Nó tồn tại như một lớp bảo vệ nếu <code>phase</code> bị hỏng do lỗi mềm. Nêu được rằng đây là
+nhánh chết — và <strong>vì sao</strong> — là một điểm cộng khi bảo vệ.</p>
+<h2 id="4-vi-sao-chon-kien-truc-nay">4. Vì sao chọn kiến trúc này</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Tiêu chí</th>
+<th>P0 (đang dùng)</th>
+<th>P1: phát xung 1 chu kỳ</th>
+<th>P5: chia N rồi chia 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chu kỳ ra</td>
+<td><strong>đúng N</strong></td>
+<td>đúng N</td>
+<td><strong>2N</strong> ❌</td>
+</tr>
+<tr>
+<td>Duty khi N lẻ</td>
+<td><code>⌈N/2⌉/N</code></td>
+<td><code>1/N</code></td>
+<td><strong>50 %</strong> ✅</td>
+</tr>
+<tr>
+<td>Ô nhớ</td>
+<td>17</td>
+<td>16</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Phù hợp bối cảnh (dùng <strong>cạnh</strong>)</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌ sai tần số</td>
+</tr>
+</tbody>
+</table></div>
+<p>P0 thắng vì bối cảnh dùng <strong>cạnh lên</strong> làm mốc. Nếu bối cảnh là "tạo clock cho một khối đồng
+bộ khác" (cần duty gần 50 % để thoả setup ở cả hai cạnh), P5 mới là lựa chọn đúng. Danh sách
+đầy đủ 6 phương án ở <code>03_ARCHITECTURE/tradeoff.md</code> §2.</p>
+<h2 id="5-cach-thuc-hien-lo-trinh-8-buoc-tu-dac-ta-toi-gdsii">5. Cách thực hiện — lộ trình 8 bước từ đặc tả tới GDSII</h2>
+<ol>
+<li><strong>Viết đẳng thức trước khi viết RTL.</strong> <code>⌈N/2⌉ + ⌊N/2⌋ = N</code> là toàn bộ chứng minh tính đúng
+   đắn. Nếu không viết nó ra, rất dễ rơi vào bẫy <code>half_len = N/2</code> cố định.</li>
+<li><strong>Lập bảng chuyển trạng thái 7 dòng</strong> (<code>fsm.md</code> §4) phủ kín mọi tổ hợp
+   <code>(rst_n, load_n, n_reg==1, phase==hl−1)</code>. Phủ kín ⟹ không sinh latch.</li>
+<li><strong>Viết mô hình chuẩn Python trước.</strong> <code>reference_model.py</code> chỉ 46 dòng nhưng chạy 8 giá trị N
+   đại diện và kiểm <strong>bất biến</strong> <code>0 ≤ phase &lt; max(1,n)</code> ở mỗi bước — mạnh hơn kiểm giá trị.</li>
+<li><strong>Viết RTL</strong>, tách <code>always_comb</code> (<code>half_len</code>, <code>count</code>) khỏi <code>always_ff</code> (3 thanh ghi).</li>
+<li><strong>Mô phỏng RTL</strong> so DUT với mô hình chuẩn ở mọi cạnh. ✅ <strong>PASS.</strong> Nhưng phải kiểm độ phủ:
+   ca N=255 hiện chỉ chạy 20/510 nhịp cần thiết.</li>
+<li><strong>Tổng hợp</strong> rồi đối chiếu <strong>số FF với số bit trạng thái RTL</strong>. Ở D03 là 17/17 — dấu hiệu
+   tốt. (So sánh: D02 cho 22 FF trên 8 bit trạng thái vì công cụ dời thanh ghi.)</li>
+<li><strong>STA</strong> với SDC ghi rõ 10 ns là <strong>giả định</strong>, rồi đối chiếu đường tới hạn thật với dự đoán
+   từ RTL. Ở D03 dự đoán sai điểm xuất phát — bài học ở <code>datapath.md</code> §3.</li>
+<li><strong>P&amp;R → DRC/LVS → GDSII</strong> bằng LibreLane + sky130A. <strong>Chưa chạy.</strong></li>
+</ol>
+<h2 id="6-so-lieu-that-da-do-duoc-va-cach-doc-chung">6. Số liệu thật đã đo được và cách đọc chúng</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Chỉ số</th>
+<th style="text-align: right;">Giá trị</th>
+<th>Nguồn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mô phỏng RTL</td>
+<td style="text-align: right;"><strong>PASS</strong> (<code>$finish</code> tại t = 1006)</td>
+<td><code>simulation.log</code></td>
+</tr>
+<tr>
+<td>Mô hình chuẩn Python</td>
+<td style="text-align: right;"><strong>PASS</strong></td>
+<td><code>python_reference_run.log</code></td>
+</tr>
+<tr>
+<td>Cell</td>
+<td style="text-align: right;">101</td>
+<td><code>synth_stat.txt</code></td>
+</tr>
+<tr>
+<td>Flip-flop</td>
+<td style="text-align: right;"><strong>17</strong></td>
+<td>như trên</td>
+</tr>
+<tr>
+<td>Diện tích</td>
+<td style="text-align: right;">975,936 µm²</td>
+<td>như trên</td>
+</tr>
+<tr>
+<td>Đường tới hạn</td>
+<td style="text-align: right;"><code>_169_</code> (<code>out</code>) → <code>_167_</code> (<code>phase[6]</code>), 10 cell</td>
+<td><code>timing_report_max.txt</code></td>
+</tr>
+<tr>
+<td>Arrival / Slack</td>
+<td style="text-align: right;">2,5 ns / <strong>+7,42 ns</strong></td>
+<td>như trên</td>
+</tr>
+<tr>
+<td>WNS / TNS</td>
+<td style="text-align: right;">0,00 / 0,00</td>
+<td><code>wns.txt</code>, <code>tns.txt</code></td>
+</tr>
+<tr>
+<td>Công suất</td>
+<td style="text-align: right;">9,81e-05 W — tổ hợp 24,1 %, <strong>tuần tự 75,9 %</strong></td>
+<td><code>power_report.txt</code></td>
+</tr>
+<tr>
+<td>Nón fan-out của <code>out</code></td>
+<td style="text-align: right;">42 cell · 341,5776 µm² · <strong>35,0 %</strong></td>
+<td>phân tích netlist, <code>datapath.md</code> §5</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Những con số này chứng minh:</strong> hàm của khối khớp cả hai mô hình chuẩn trên toàn bộ vector mà
+testbench chạy (bao gồm N = 1, 2, 3, 4, 5, 254, 255 và một lần đổi N giữa chừng); RTL tổng hợp
+được ra 101 standard cell sky130; <strong>không có ô nhớ thừa</strong> — 17 FF khớp đúng 17 bit trạng thái
+RTL và khớp luôn "dấu hiệu làm đúng" của Charter mục 10; với chu kỳ giả định 10 ns ở góc
+<code>tt_025C_1v80</code> sau tổng hợp, không có vi phạm setup nào.</p>
+<p><strong>Những con số này KHÔNG chứng minh:</strong> rằng chu kỳ ra đúng 255 — ca N=255 chỉ chạy 20 nhịp,
+chưa lật <code>out</code> lần nào (cần ≥ 510 nhịp); rằng netlist tương đương RTL — chưa gate-level sim;
+rằng độ trễ thật là 2,5 ns — chưa có ký sinh dây; rằng mạch chạy ở tần số nào đó — một góc PVT,
+skew = 0; rằng <strong>35,0 %</strong> là <strong>chi phí gia tăng</strong> của việc hỗ trợ N lẻ — đó là <strong>chặn trên</strong>,
+vì cây so sánh 8 bit vẫn cần dù bỏ N lẻ.</p>
+<h2 id="7-tra-loi-cac-cau-hoi-ky-thuat-cua-charter-muc-2">7. Trả lời các câu hỏi kỹ thuật của Charter (mục 2)</h2>
+<p><strong>(1) Với N lẻ, chu kỳ nhiệm vụ không thể đúng 50 % — chọn xử lý thế nào và vì sao?</strong>
+Chọn <strong>giữ chu kỳ đúng N, chấp nhận duty lệch</strong>, dồn phần lẻ vào nửa chu kỳ <strong>cao</strong>:
+<code>half_len = out ? ⌈N/2⌉ : ⌊N/2⌋</code>. Với N=3 được 2 cao / 1 thấp ⟹ duty 66,7 %; với N=255 được
+128/127 ⟹ 50,196 %. Lý do: bối cảnh ứng dụng dùng <strong>cạnh lên</strong> làm mốc lấy mẫu, nên chu kỳ mới
+là đại lượng phải đúng. Phương án ép duty 50 % (P5: chia N rồi chia tiếp 2) <strong>tồn tại và chạy
+được</strong>, nhưng nó biến chu kỳ thành 2N — tức không còn là bộ chia N. Đây là đánh đổi có ý thức,
+không phải né tránh.</p>
+<p><strong>(2) Thay đổi N khi đang chạy gây ra hiện tượng gì, và mạch xử lý ra sao?</strong>
+<code>load_n</code> ép <code>phase←0</code> và <code>out←0</code> (dòng 29–30), <strong>cắt ngang</strong> nửa chu kỳ đang chạy ⟹ sinh <strong>một
+xung cụt</strong>. Ví dụ đo được từ chính testbench: đổi 5 → 2 ngay sau khi <code>out</code> vừa lên ⟹ mức cao
+chỉ kéo dài <strong>1 chu kỳ</strong> thay vì <code>⌈5/2⌉ = 3</code> (giản đồ ở <code>timing_diagram.md</code> §4). Mạch <strong>không
+treo</strong>; chu kỳ đầu tiên với N mới đã đúng và đầy đủ. Đánh đổi: hy sinh tính liên tục của pha
+một lần để đổi lấy chu kỳ mới đúng ngay. Muốn không có xung cụt, cần thêm thanh ghi "N chờ"
+(+8 FF, phương án P3).</p>
+<p><strong>(3) Bộ chia tần này chạy được tối đa bao nhiêu MHz?</strong>
+<strong>Chưa trả lời được bằng số liệu hiện có</strong> — và đây là câu trả lời đúng, không phải né tránh.
+Được phép nói: <em>với chu kỳ giả định 10 ns, góc <code>tt_025C_1v80</code>, sau tổng hợp và chưa có ký sinh
+dây, đường xấu nhất có arrival 2,5 ns và slack +7,42 ns; <code>wns = tns = 0,00</code>.</em> <strong>Không</strong> được
+suy ra tần số, vì còn thiếu: ký sinh dây sau routing, các góc PVT <code>ss</code>/<code>ff</code>, và cây clock thật
+(skew hiện giả định 0). Muốn có con số, phải chạy LibreLane tới routing, trích RC, rồi quét chu
+kỳ giảm dần tới khi slack chạm 0 ở góc xấu nhất. Việc này <strong>chưa chạy</strong>.</p>
+<h2 id="8-tra-loi-cau-phan-tich-rieng-charter-muc-9">8. Trả lời câu phân tích riêng (Charter mục 9)</h2>
+<blockquote>
+<p><em>"Nêu rõ cách thiết kế xử lý N lẻ, và </em><em>chỉ ra phần logic phụ trách việc đó</em><em>."</em></p>
+</blockquote>
+<p><strong>Cách xử lý:</strong> đã nêu ở §2 và §7(1) — <code>half_len</code> phụ thuộc <code>out</code>, dựa trên đẳng thức
+<code>⌈N/2⌉ + ⌊N/2⌋ = N</code>.</p>
+<p><strong>Phần logic phụ trách, định vị ba cách:</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Cách định vị</th>
+<th>Kết quả</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trong <strong>RTL</strong></td>
+<td>7 dòng: <code>d03_core.sv</code> dòng 13–20</td>
+</tr>
+<tr>
+<td>Trong <strong>netlist</strong> (nón fan-out của <code>out</code>)</td>
+<td><strong>42 cell tổ hợp · 341,5776 µm² · 35,0 %</strong> tổng diện tích</td>
+</tr>
+<tr>
+<td>Trong <strong>STA</strong></td>
+<td><strong>2 cell đầu tiên</strong> của đường tới hạn: <code>_081_ and3_1</code>, <code>_083_ xor2_1</code> — nằm ngay sau <code>_169_/Q = out</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Phương pháp đo và phép tự kiểm (tổng tính lại = 975,936 µm², trùng khít số Yosys báo) ở
+<code>datapath.md</code> §5.</p>
+<p><strong>Phát hiện đáng chú ý nhất:</strong> phần logic trả lời Charter mục 9 <strong>chính là</strong> đường tới hạn của
+thiết kế. Không phải trùng hợp — nếu duty luôn 50 %, <code>half_len</code> thành hằng <code>n_reg &gt;&gt; 1</code>, tín
+hiệu <code>out</code> <strong>biến mất khỏi</strong> đường này, và đường tới hạn sẽ bắt đầu từ <code>n_reg</code>. Nói cách khác:
+<strong>cái giá về thời gian của việc hỗ trợ N lẻ nằm ở hai tầng cổng đầu của đường tới hạn</strong> — đo
+được, không phải suy đoán.</p>
+<p>Đồng thời phải nói rõ <strong>35,0 % là chặn trên, không phải chi phí gia tăng</strong>: cây so sánh bằng
+8 bit vẫn cần ngay cả khi bỏ hẳn N lẻ, nó chỉ không cần chân chọn <code>out</code> nữa. Chi phí gia tăng
+thật đòi hỏi tổng hợp lại một bản rút gọn — <strong>chưa chạy</strong>, và không được ước lượng bừa.</p>
+<h2 id="9-nhung-cho-sinh-vien-hay-sai-va-cach-phat-hien">9. Những chỗ sinh viên hay sai và cách phát hiện</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Sai lầm</th>
+<th>Hậu quả</th>
+<th>Phát hiện bằng bằng chứng nào</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>half_len = n_reg / 2</code> cố định</td>
+<td>Chu kỳ ra = <code>N−1</code> với mọi N lẻ (N=3 cho 2)</td>
+<td>Ca C-3 (N=3) trong testbench; đếm khoảng cách giữa hai <code>$rose(out)</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>half_len = (n_reg + 1) / 2</code> cố định</td>
+<td>Chu kỳ ra = <code>N+1</code> với mọi N lẻ; và <strong>tràn</strong> khi <code>n_reg = 255</code></td>
+<td>Ca N=3 và ca biên N=255</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Đăng ký <code>half_len</code> vào thanh ghi</td>
+<td>Chu kỳ dài thêm 1 với <strong>mọi</strong> N</td>
+<td>So sánh chu kỳ đo được với N ở ≥ 2 giá trị; sai lệch <strong>hằng số +1</strong> là dấu vân tay của lỗi này</td>
+</tr>
+<tr>
+<td>4</td>
+<td>So <code>phase == half_len</code> thay vì <code>half_len − 1</code></td>
+<td>Chu kỳ dài thêm 2 (mỗi nửa +1)</td>
+<td>như trên, sai lệch +2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Bỏ nhánh <code>n_reg &lt;= 1</code></td>
+<td><code>half_len − 1</code> tràn thành <code>8'hFF</code> ⟹ đếm 256 chu kỳ</td>
+<td>Ca N=1; và assertion INV-3 (<code>half_len ≥ 1</code>)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Quên ánh xạ <code>n_in == 0 → 1</code></td>
+<td>"Chia 0" không xác định</td>
+<td>Ca A-3 (chưa có trong testbench)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Tưởng <code>load_n</code> tích cực <strong>thấp</strong> vì tên có <code>_n</code></td>
+<td>Nối đảo ⟹ nạp liên tục ⟹ <code>out</code> kẹt ở 0</td>
+<td>Đọc RTL dòng 27: <code>else if (load_n)</code> ⟹ tích cực <strong>cao</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Tưởng reset là <strong>bất đồng bộ</strong></td>
+<td>Xung <code>rst_n</code> hẹp hơn 1 chu kỳ bị <strong>bỏ qua im lặng</strong></td>
+<td><code>always_ff</code> chỉ nhạy <code>posedge clk</code>; netlist dùng <code>dfxtp_1</code> <strong>không có chân reset</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Chạy N=255 chỉ 20 nhịp rồi ghi "PASS"</td>
+<td>Ca biên <strong>chưa lật <code>out</code> lần nào</strong> ⟹ không chứng minh được gì</td>
+<td>Tính: <code>⌊255/2⌋ = 127</code> ⟹ cần ≥ 510 nhịp cho 2 chu kỳ đầy đủ</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Nói "slack 7,42 ns ⟹ chạy được XXX MHz"</td>
+<td>Phát biểu vượt mức</td>
+<td><code>physical_report.md</code> §5: chưa có RC, một góc PVT, skew = 0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Dùng <code>count[6:0]</code> để đếm số nhịp đã phát</td>
+<td>Sai hoàn toàn — nó là <strong>pha trong nửa chu kỳ</strong>, bị đặt lại mỗi lần lật</td>
+<td>Giản đồ <code>timing_diagram.md</code> §1: <code>count</code> chạy 00→01→00 với N=3</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="10-cau-hoi-mentor-nen-dat-khi-bao-ve">10. Câu hỏi mentor nên đặt khi bảo vệ</h2>
+<ol>
+<li><strong>"Với N = 3, <code>out</code> cao mấy chu kỳ và thấp mấy chu kỳ? Vì sao không bằng nhau?"</strong> → Cao 2,
+   thấp 1. Vì <code>⌈3/2⌉ = 2</code> và <code>⌊3/2⌋ = 1</code>; 3 là số lẻ nên không chia đôi được. Tổng = 3 ⟹ chu kỳ
+   vẫn đúng.</li>
+<li><strong>"Chỉ cho tôi đúng dòng RTL xử lý N lẻ."</strong> → Dòng 16–19: <code>else if (out) half_len = n_reg -
+   (n_reg / 2); else half_len = n_reg / 2;</code></li>
+<li><strong>"Vì sao viết <code>n_reg - (n_reg/2)</code> mà không viết <code>(n_reg+1)/2</code>?"</strong> → Hai biểu thức bằng nhau
+   về toán học, nhưng <code>n_reg + 1</code> <strong>tràn về 0</strong> khi <code>n_reg = 255</code> trong 8 bit.</li>
+<li><strong>"Phần logic đó tốn bao nhiêu diện tích? Trả lời bằng số."</strong> → Nón fan-out của <code>out</code>:
+   42 cell, 341,5776 µm², 35,0 %. Và phải nói rõ đây là <strong>chặn trên</strong>, không phải chi phí
+   gia tăng.</li>
+<li><strong>"Đường tới hạn của em bắt đầu ở đâu? Có bất ngờ không?"</strong> → Bắt đầu ở <code>out</code>, không phải ở
+   <code>n_reg</code> như dự đoán từ RTL. Vì <code>abc</code> hợp nhất mux <code>half_len</code> với bộ trừ nên <code>out</code> chui thẳng
+   vào trong bộ trừ.</li>
+<li><strong>"Muốn duty đúng 50 % với N lẻ thì làm thế nào?"</strong> → Chia N rồi chia tiếp cho 2 bằng một FF
+   lật (P5). Nhưng chu kỳ thành <strong>2N</strong> — không còn là bộ chia N. Đây là đánh đổi, không phải
+   lời giải miễn phí.</li>
+<li><strong>"Đổi N giữa chừng thì sao? Có glitch không?"</strong> → <code>phase←0</code>, <code>out←0</code> ⟹ <strong>xung cụt</strong>, không
+   glitch (vì <code>out</code> là thanh ghi). Ví dụ đo được: 5 → 2 làm mức cao chỉ dài 1 chu kỳ thay vì 3.</li>
+<li><strong>"N = 1 cho ra cái gì?"</strong> → <code>out ≡ 1</code> đứng yên, <strong>không có xung</strong>. Tầng ngoài chờ cạnh lên
+   sẽ treo. Đây là điểm cần thầy chốt.</li>
+<li><strong>"Bao nhiêu flip-flop? Có khớp RTL không?"</strong> → 17 FF, khớp đúng 17 bit trạng thái RTL
+   (8 + 8 + 1) và khớp Charter mục 10. Không có ô nhớ thừa do công cụ.</li>
+<li><strong>"<code>count</code> có nhánh bão hoà <code>7'h7f</code>. Nhánh đó có bao giờ chạy không?"</strong> → Không, đó là
+    <strong>logic chết</strong>: <code>phase &lt; half_len ≤ 128 ⟹ phase ≤ 127</code>. Nó là lớp bảo vệ nếu <code>phase</code> hỏng.</li>
+<li><strong>"Tần số tối đa là bao nhiêu?"</strong> → Chưa trả lời được; cần P&amp;R + trích RC + ≥ 3 góc PVT.</li>
+<li><strong>"Ca N = 255 của em chạy bao nhiêu nhịp? Đủ chưa?"</strong> → 20 nhịp; <strong>chưa đủ</strong>, cần ≥ 510 để
+    thấy hai chu kỳ đầy đủ. Ca này hiện chưa chứng minh được gì về chu kỳ.</li>
+</ol>
+<h2 id="11-gioi-han-da-chung-minh-duoc-gi-chua-chung-minh-duoc-gi">11. Giới hạn: đã chứng minh được gì, chưa chứng minh được gì</h2>
+<p><strong>Đã chứng minh.</strong> Hàm của khối khớp hai mô hình chuẩn độc lập (SystemVerilog và Python) trên
+toàn bộ vector testbench chạy — <code>simulation.log</code> ghi <code>D03 core verification PASS</code>. RTL tổng hợp
+được thành 101 standard cell sky130 (975,936 µm²). Thiết kế đúng là mạch tuần tự, với <strong>17
+flip-flop khớp chính xác 17 bit trạng thái RTL</strong> — không có ô nhớ thừa do công cụ. Với chu kỳ
+<strong>giả định</strong> 10 ns ở góc <code>tt_025C_1v80</code> sau tổng hợp, đường xấu nhất (<code>out</code> → <code>phase[6]</code>, 10
+cell) có arrival 2,5 ns và slack +7,42 ns, <code>wns = tns = 0,00</code>. Phần logic xử lý N lẻ đã được
+định vị bằng ba cách độc lập (RTL / netlist / STA) và con số diện tích đã được tự kiểm bằng
+phép cộng khớp tổng của công cụ.</p>
+<p><strong>Chưa chứng minh.</strong> Chu kỳ ra đúng với N lớn: ca N=254/255 mới chạy 20 nhịp, <code>out</code> <strong>chưa lật
+lần nào</strong> — đây là lỗ hổng phủ nghiêm trọng nhất và nên được vá trước tiên. Netlist tương đương
+RTL (chưa gate-level sim, chưa LEC). Độ trễ sau routing (chưa có ký sinh dây). Biên an toàn
+qua góc <code>ss</code>/<code>ff</code>. Hold sau CTS (báo cáo hiện tính với skew = 0). Công suất thật từ VCD. Hành
+vi khởi động ở gate-level: <code>dfxtp_1</code> không có chân reset nên <code>out</code> <strong>không</strong> bảo đảm bằng 0
+trước cạnh clock đầu tiên. DRC/LVS/GDSII. Lớp vỏ 24 chân (ngân sách <strong>đủ</strong>, 19/24, nhưng ánh
+xạ chưa chốt).</p>
+<p><strong>Không được khẳng định.</strong> "Đã sign-off", "đã tape-out", "đã chế tạo", "chạy được ở XXX MHz",
+"đã tối ưu netlist", "đã kiểm chứng đầy đủ N = 255".</p>
+<p><strong>Việc cần làm tiếp, theo thứ tự ưu tiên:</strong> (1) kéo dài ca N=254/255 lên ≥ 510 nhịp và chạy
+lại; (2) thêm ca N=0 và ca đổi N có kiểm soát (A-3, A-4 ở <code>corner_cases.md</code>); (3) chốt ngữ
+nghĩa N=1 với thầy; (4) gate-level sim để kiểm hành vi khởi động và tương đương netlist.</p>
+<hr>
+<p><em>Phiên bản: v1.0 · Ngày: 2026-09-24</em></p>
+</main>
+<footer class="doc">
+  Tài liệu sinh từ <code>implementation-notes_D03.md</code>.
+  Mọi số liệu đều kèm công cụ, phiên bản và lệnh tái lập trong
+  <code>07_TRACEABILITY/evidence_index.md</code>.
+</footer>
+</div>
+<script>
+(function(){
+  var b=document.createElement('button');
+  b.className='themebtn'; b.type='button';
+  function lbl(){var t=document.documentElement.getAttribute('data-theme');
+    return t==='dark'?'Nen sang':(t==='light'?'Nen toi':'Doi nen');}
+  b.textContent=lbl();
+  try{var s=localStorage.getItem('rtl2gds-theme'); if(s)document.documentElement.setAttribute('data-theme',s);}catch(e){}
+  b.textContent=lbl();
+  b.addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    var mq=window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var next=cur?(cur==='dark'?'light':'dark'):(mq?'light':'dark');
+    document.documentElement.setAttribute('data-theme',next);
+    try{localStorage.setItem('rtl2gds-theme',next);}catch(e){}
+    b.textContent=lbl();
+  });
+  document.body.appendChild(b);
+})();
+</script>
+</body>
+</html>

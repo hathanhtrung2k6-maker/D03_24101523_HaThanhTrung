@@ -1,0 +1,14 @@
+{
+    "json_h": "/home/lucero/projects/RTL2GDS_UNIFIED_80_v2.0/D03_Bo_chia_tan_lap_trinh_duoc_chia_N_N_1_255/04_IMPLEMENTATION/scripts/runs/RUN_2026-09-24_22-34-04/05-yosys-jsonheader/d03_core.h.json",
+    "nl": "/home/lucero/projects/RTL2GDS_UNIFIED_80_v2.0/D03_Bo_chia_tan_lap_trinh_duoc_chia_N_N_1_255/04_IMPLEMENTATION/scripts/runs/RUN_2026-09-24_22-34-04/06-yosys-synthesis/d03_core.nl.v",
+    "metrics": {
+        "design__lint_error__count": 0,
+        "design__lint_timing_construct__count": 0,
+        "design__lint_warning__count": 0,
+        "design__inferred_latch__count": 0,
+        "design__instance__count": 106,
+        "design__instance__area": 1222.4224,
+        "design__instance_unmapped__count": 0,
+        "synthesis__check_error__count": 0
+    }
+}
