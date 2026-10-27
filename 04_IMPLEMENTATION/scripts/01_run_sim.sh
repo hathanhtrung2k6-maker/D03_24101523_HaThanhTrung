@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+y#!/usr/bin/env bash
 # =====================================================================
 #  D03 · Buoc 1 — Mo phong chuc nang (Icarus Verilog)
 #  Chay tu THU MUC GOC cua du an:
@@ -15,7 +15,6 @@ iverilog -V | head -1 | tee "$OUT/tool_versions.txt"
 
 iverilog -g2012 -o "$OUT/sim.vvp" \
     04_IMPLEMENTATION/rtl/d03_core.sv \
-    05_VERIFICATION/golden_model/d03_reference.sv \
     05_VERIFICATION/testbench/d03_core_tb.sv
 
 cd "$OUT" && vvp sim.vvp | tee simulation.log; cd "$ROOT"
